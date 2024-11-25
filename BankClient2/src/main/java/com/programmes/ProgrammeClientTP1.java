@@ -24,7 +24,7 @@ public class ProgrammeClientTP1 {
 		Scanner clavier = new Scanner(System.in);
 		Client client = new Client();
 		String saisie;
-
+		//TEST
 		if (!client.connecter()) {
 			System.out.println("Serveur introuvable a l'adresse " + client.getAdrServeur()
 					+ " sur le port " + client.getPortServeur());
