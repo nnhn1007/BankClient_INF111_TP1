@@ -5,7 +5,7 @@ SEARCHING : le client recherche le serveur
 NOTFOUND : le client n'a pas trouvé le serveur
 CONNECTING : le serveur a été trouvé mais le client attend que le serveur valide la demande (utilisateur+mot de passe)
 REFUSED : le serveur a refusé la connexion car l'utilisateur ou son mot de passe sont incorrects
-CONNECTED : le client est connecté 
+CONNECTED : le client est connecté
 DISCONNECTING : le client est entrain de se déconnecter
 */
 
