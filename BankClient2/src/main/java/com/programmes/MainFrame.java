@@ -86,7 +86,9 @@ public class MainFrame extends JFrame implements Runnable, Observateur {
     }
 
     public static void main(String[] args) {
-        EventQueue.invokeLater( new MainFrame() );
+       JFrame fenetre =new MainFrame();
+       fenetre.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       fenetre.setVisible(true);
     }
 
     @Override
