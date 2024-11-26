@@ -90,14 +90,28 @@ public class MainFrame extends JFrame implements Runnable, Observateur {
     }
 
     @Override
+    /**
+     * Question 1.1 - Nancy Nguyen
+     * Méthode qui met à jour l'interface utilisateur selon l'état de connexion du client:
+     *      - Si le client est connecté: miConnecter = false, et miDeconnecter = true;
+     *      - Si le client est déconnecté: miConnecter = true, et miDeconnecter = false;
+     * @param observable objet observable modifié, soit l'instance Client
+     */
     public void seMettreAJour(Observable observable) {
         if (observable instanceof Client) {
             Client client = (Client)observable;
-            if (!client.isConnecte()) {
+            //Cas où le client est déconnecté
+            if(!client.isConnecte()){
+                miConnecter.setEnabled(true); //permet à l'utisateur de se connecter
+                miDeconnecter.setEnabled(false);
                 this.setTitle(TITRE);
                 this.panneauPrincipal.setVisible(false);
                 panneauPrincipal.cacherPanneauCompteClient();
                 panneauPrincipal.montrerPanneauConnexion();
+            } else {  //Cas où le client est connecté
+                miConnecter.setEnabled(false);
+                miDeconnecter.setEnabled(true);
+                panneauPrincipal.setVisible(true);
             }
         }
     }
