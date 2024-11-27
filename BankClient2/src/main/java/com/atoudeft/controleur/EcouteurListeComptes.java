@@ -1,6 +1,7 @@
 package com.atoudeft.controleur;
 
 import com.atoudeft.client.Client;
+import com.atoudeft.vue.PanneauOperationsCompte;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -15,7 +16,8 @@ import java.awt.event.MouseEvent;
 public class EcouteurListeComptes extends MouseAdapter {
 
     private Client client;
-    private JList<String> jList; //ajout pour la question 3.1
+    //ajouts pour la question 3.1
+    private JList<String> jList;
 
     //constructeur modifié
     public EcouteurListeComptes(Client client, JList<String> jList) {
@@ -25,8 +27,9 @@ public class EcouteurListeComptes extends MouseAdapter {
 
     /**
      * Question 3.1 - Nancy Nguyen
-     * M
-     * @param evt the event to be processed
+     * Méthode vérifiant si l'événement est un double-clic, et extrait le type de compte sélectionné.
+     * Renvoie la commande SELECT au compte sélectionné
+     * @param evt l'événement à traiter
      */
     @Override
     public void mouseClicked(MouseEvent evt) {
@@ -35,11 +38,34 @@ public class EcouteurListeComptes extends MouseAdapter {
 
             //2. Récupérer le compte sélectionné
             String compteSelectionne = (String) jList.getSelectedValue();
-            if(!compteSelectionne.isEmpty()){
+            System.out.println("Compte selectionne : " + compteSelectionne); //TODO test a enlever
+
+            //3. Recuperation du type de compte
+            if(compteSelectionne != null ){
+                String typeCompte = extractionTypeCompte(compteSelectionne);
+                System.out.println("Type de compte: " + typeCompte); //TODO test a enlever
                 client.envoyer("SELECT");
+
             } else {
+                System.out.println("AUCUN COMPTE SELECTIONNE "); //TODO test a enlever
                 client.envoyer("SELECT NO");
             }
         }
+    }
+
+    /**  Question 3.1 - Nancy Nguyen
+     * Méthode qui extrait le type de compte
+     * @param compte compte sélectionné
+     * @return le type de compte
+     */
+    private String extractionTypeCompte(String compte){
+        int indexDebut = compte.indexOf('[');
+        int indexFin = compte.indexOf(']');
+
+        if(indexDebut != -1 && indexFin != -1 && indexDebut < indexFin){
+            //Extraire le type de compte entre les crochets
+            return compte.substring(indexDebut+1, indexFin);
+        }
+        return compte;
     }
 }
