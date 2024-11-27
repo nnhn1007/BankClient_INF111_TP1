@@ -22,15 +22,17 @@ public class EcouteurOperationsCompte implements ActionListener {
         Object source = e.getSource();
         String action;
         action = ((JButton) source).getActionCommand();
+
         switch (action) {
             case "EPARGNE":
                 client.lire();
                 client.envoyer(action);
                 break;
-
-            case "DEPOT":
+            case "SELECT":
+                client.envoyer(action);
                 break;
-            case "RETRAIT":
+            case "DEPOT", "RETRAIT":
+                client.envoyer(action);
                 break;
             case "FACTURE":
                 break;
@@ -38,6 +40,9 @@ public class EcouteurOperationsCompte implements ActionListener {
                 break;
             case "HIST":
                 break;
+            /******************* TRAITEMENT PAR DÉFAUT *******************/
+            default:
+                System.out.println("COMMANDE: " + e.getActionCommand());
         }
 
     }

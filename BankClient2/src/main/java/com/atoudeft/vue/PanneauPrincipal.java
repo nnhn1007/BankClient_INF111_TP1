@@ -7,10 +7,6 @@ import com.atoudeft.controleur.EcouteurOperationsCompte;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Vector;
 
 /**
  *
@@ -23,6 +19,8 @@ public class PanneauPrincipal  extends JPanel {
     private PanneauConnexion panneauConnexion;
     private JPanel panneauCompteClient;
     private PanneauOperationsCompte panneauOperationsCompte;
+    private PanneauDepot panneauDepot;
+    private PanneauRetrait panneauRetrait;
 
 
     private DefaultListModel<String> numerosComptes;
@@ -37,8 +35,21 @@ public class PanneauPrincipal  extends JPanel {
         panneauConnexion.setEcouteur(new EcouteurConnexion(client,panneauConnexion));
         panneauCompteClient = new JPanel();
 
+
+        // Création des panneaux d'opérations.
         panneauOperationsCompte = new PanneauOperationsCompte();
-        panneauOperationsCompte.setEcouteur(new EcouteurOperationsCompte(client,panneauCompteClient));
+        panneauDepot = new PanneauDepot();
+        panneauRetrait= new PanneauRetrait();
+
+
+        // Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
+        EcouteurOperationsCompte ecouteurOperationsCompte = new EcouteurOperationsCompte(client, panneauCompteClient);
+
+
+        panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
+        panneauDepot.setEcouteur(ecouteurOperationsCompte);
+        panneauRetrait.setEcouteur(ecouteurOperationsCompte);
+
 
 
         panneauCompteClient.setLayout(new BorderLayout());
