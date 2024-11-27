@@ -16,10 +16,6 @@ import java.awt.event.ActionListener;
 public class EcouteurMenuPrincipal implements ActionListener {
     private Client client;
     private JFrame fenetre;
-    private JLabel etiquetteAdresse;
-    private JTextField champAdresse;
-    private JLabel etiquettePort;
-    private JTextField champPort;
 
     public EcouteurMenuPrincipal(Client client, JFrame fenetre) {
         this.client = client;
@@ -56,7 +52,7 @@ public class EcouteurMenuPrincipal implements ActionListener {
                     break;
                 case "CONFIGURER":
                     //Fait par Mathis Odjo'o Ada
-                    if (!client.isConnecte()) {
+                    if (!client.isConnecte()) { // Vérifie si l'utilisateur n'est pas déja connecté sur un serveur
                         boolean config = true;
                         PanneauConfigServeur configurationPanel = new PanneauConfigServeur(client.getAdrServeur(), client.getPortServeur());
                         while (config) {
@@ -69,6 +65,7 @@ public class EcouteurMenuPrincipal implements ActionListener {
                                     config = false;
                                 }
                                 else if (res == JOptionPane.CANCEL_OPTION) { break; }
+                                //Si l'utilisateur rentre un port avec des lettres ou si le port est null
                             } catch (NumberFormatException e) { System.out.println(e); }
                         }
                     }
