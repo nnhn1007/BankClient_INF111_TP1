@@ -41,16 +41,12 @@ public class PanneauPrincipal  extends JPanel {
         panneauDepot = new PanneauDepot();
         panneauRetrait= new PanneauRetrait();
 
-
         // Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
         EcouteurOperationsCompte ecouteurOperationsCompte = new EcouteurOperationsCompte(client, panneauCompteClient);
-
 
         panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
         panneauDepot.setEcouteur(ecouteurOperationsCompte);
         panneauRetrait.setEcouteur(ecouteurOperationsCompte);
-
-
 
         panneauCompteClient.setLayout(new BorderLayout());
         panneauCompteClient.setBackground(Color.WHITE);
@@ -67,7 +63,8 @@ public class PanneauPrincipal  extends JPanel {
         panneauCompteClient.add(panneauOperationsCompte, BorderLayout.NORTH);
         panneauCompteClient.add(jlNumerosComptes, BorderLayout.WEST);
         //Enregistrement de l'écouteur de souris:
-        jlNumerosComptes.addMouseListener(new EcouteurListeComptes(client));
+        jlNumerosComptes.addMouseListener(new EcouteurListeComptes(client, jlNumerosComptes));
+
 
         this.setLayout(new BorderLayout());
 
