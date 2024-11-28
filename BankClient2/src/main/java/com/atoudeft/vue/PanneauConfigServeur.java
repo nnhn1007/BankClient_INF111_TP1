@@ -36,12 +36,12 @@ public class PanneauConfigServeur extends JPanel {
         //4. Ajout des étiquettes et des champs de textes du panneau
         JLabel lblTxtAdrServeur = new JLabel();
         add(new JLabel("Adresse IP: ", SwingConstants.RIGHT));
-        lblTxtAdrServeur.setPreferredSize(new Dimension(50,10));//TODO changer largeur colonne avec les etiquettes
+        lblTxtAdrServeur.setPreferredSize(new Dimension(50,10));//TODO changer largeur colonne des etiquettes
         add(txtAdrServeur);
 
         JLabel lblTxtNumPort = new JLabel();
         add(new JLabel("Port: ", SwingConstants.RIGHT));
-        lblTxtNumPort.setPreferredSize(new Dimension(50,10));//TODO changer largeur colonne avec les etiquettes
+        lblTxtNumPort.setPreferredSize(new Dimension(50,10));//TODO changer largeur colonne des etiquettes
         add(txtNumPort);
 
     }
