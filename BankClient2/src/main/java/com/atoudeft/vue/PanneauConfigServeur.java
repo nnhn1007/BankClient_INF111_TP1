@@ -21,26 +21,31 @@ public class PanneauConfigServeur extends JPanel {
      */
     public PanneauConfigServeur(String adr, int port) {
         //1. Définition du champ de texte txtAdrServeur, et des valeurs initiales
-        txtAdrServeur = new JTextField(20);
+        txtAdrServeur = new JTextField();
+        txtAdrServeur.setPreferredSize(new Dimension(175,10));
         txtAdrServeur.setText(adr); //Afficher l'adresse IP
 
         //2. Définition du champ de texte txtNumPort, et des valeurs initiales
-        txtNumPort = new JTextField(10);
+        txtNumPort = new JTextField();
+        txtNumPort.setPreferredSize(new Dimension(175,10));
         txtNumPort.setText(String.valueOf(port)); //Afficher le port
 
         //3. Configuration du panneau
-        setLayout(new GridLayout(2,6)); //
+        setLayout(new GridLayout(2,2)); //
 
         //4. Ajout des étiquettes et des champs de textes du panneau
-        add(new JLabel("Adresse IP: "));
+        JLabel lblTxtAdrServeur = new JLabel();
+        add(new JLabel("Adresse IP: ", SwingConstants.RIGHT));
+        lblTxtAdrServeur.setPreferredSize(new Dimension(50,10));//TODO changer largeur colonne avec les etiquettes
         add(txtAdrServeur);
-        add(new JLabel("Port: "));
+
+        JLabel lblTxtNumPort = new JLabel();
+        add(new JLabel("Port: ", SwingConstants.RIGHT));
+        lblTxtNumPort.setPreferredSize(new Dimension(50,10));//TODO changer largeur colonne avec les etiquettes
         add(txtNumPort);
+
     }
-    public String getAdresseServeur() {
-        return txtAdrServeur.getText();
-    }
-    public String getPortServeur() {
-        return txtNumPort.getText();
+    public String getAdresseServeur() { return txtAdrServeur.getText(); }
+    public String getPortServeur() {return txtNumPort.getText();
     }
 }
