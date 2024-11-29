@@ -25,7 +25,11 @@ public class PanneauOperationsCompte extends JPanel {
         bHistorique.setActionCommand("HIST");
 
         //à compléter :
+        JPanel panneauSolde = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        panneauSolde.add(lblSolde);
+
         this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        this.add(panneauSolde);
         this.add(lblSolde);
         this.add(bEpargne);
         this.add(bDepot);
@@ -41,5 +45,8 @@ public class PanneauOperationsCompte extends JPanel {
         bTransfert.addActionListener(ecouteur);
         bFacture.addActionListener(ecouteur);
         bHistorique.addActionListener(ecouteur);
+    }
+    public void afficherSolde(double solde) {
+        lblSolde.setText(""+ solde);
     }
 }

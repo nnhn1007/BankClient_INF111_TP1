@@ -1,5 +1,9 @@
 package com.atoudeft.vue;
 
+import com.atoudeft.Operation.Operation;
+import com.atoudeft.Operation.OperationDepot;
+import com.atoudeft.Operation.TypeOperation;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -9,12 +13,16 @@ public class PanneauDepot extends JPanel {
     private JTextField montant;
     private JButton btnValider;
     private JButton btnAnnuler;
+    private TypeOperation typeOperation;
 
-    public PanneauDepot() {
+
+    public PanneauDepot(TypeOperation typeOp, String action) {
+        this.typeOperation=typeOp;
         creerChampMontant();
-        creerBouton();
+        creerBoutons();
         creerPanel();
     }
+
 
     public void setEcouteur(ActionListener ecouteur) {
         btnValider.addActionListener(ecouteur);
@@ -23,11 +31,11 @@ public class PanneauDepot extends JPanel {
 
     private void creerChampMontant() {
         final int LARGEUR_CHAMP = 10;
-        txtmontant = new JLabel("Montant : ");
+        txtmontant = new JLabel("Montant : ",SwingUtilities.RIGHT);
         montant = new JTextField(LARGEUR_CHAMP);
     }
 
-    private void creerBouton() {
+    private void creerBoutons() {
         btnValider = new JButton("Valider");
         btnAnnuler = new JButton("Annuler");
     }
@@ -39,5 +47,11 @@ public class PanneauDepot extends JPanel {
         add(montant);
         add(btnValider);
         add(btnAnnuler);
+    }
+    public Operation operation(){
+        return new OperationDepot(getMontant());
+    }
+    public double getMontant(){
+        return Double.parseDouble(montant.getText());
     }
 }

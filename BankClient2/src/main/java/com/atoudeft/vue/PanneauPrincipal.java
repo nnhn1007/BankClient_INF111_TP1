@@ -1,6 +1,7 @@
 package com.atoudeft.vue;
 
 import com.atoudeft.client.Client;
+import com.atoudeft.Operation.TypeOperation;
 import com.atoudeft.controleur.EcouteurConnexion;
 import com.atoudeft.controleur.EcouteurListeComptes;
 import com.atoudeft.controleur.EcouteurOperationsCompte;
@@ -38,7 +39,7 @@ public class PanneauPrincipal  extends JPanel {
 
         // Création des panneaux d'opérations.
         panneauOperationsCompte = new PanneauOperationsCompte();
-        panneauDepot = new PanneauDepot();
+        panneauDepot= new PanneauDepot(TypeOperation.DEPOT,"DEPOT");
         panneauRetrait= new PanneauRetrait();
 
         // Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
