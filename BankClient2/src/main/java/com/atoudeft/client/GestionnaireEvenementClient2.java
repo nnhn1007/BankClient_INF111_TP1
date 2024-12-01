@@ -94,6 +94,8 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     break;
                 case "SELECT":
                     arg = evenement.getArgument();
+                    double solde = Double.parseDouble(arg.trim());
+                    panneauPrincipal.getPanneauOperationsCompte().afficherSolde(solde);
                     JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
                     break;
 

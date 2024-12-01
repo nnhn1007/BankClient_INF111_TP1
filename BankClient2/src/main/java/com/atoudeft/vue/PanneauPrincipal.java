@@ -103,4 +103,8 @@ public class PanneauPrincipal  extends JPanel {
     public void ajouterCompte(String str) {
         numerosComptes.addElement(str);
     }
+
+    public PanneauOperationsCompte getPanneauOperationsCompte() {
+        return panneauOperationsCompte;
+    }
 }
