@@ -1,19 +1,16 @@
 package com.atoudeft.vue;
 
 import com.atoudeft.Operation.TypeOperation;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import com.atoudeft.Operation.*;
 
 /**
  *
  */
 public class PanneauOperation extends JPanel {
-    private static final int ESPACE = 15, COLONNE = 0, LIGNE = 1;
+    private static final int ESPACE =5 , COLONNE = 0, LIGNE = 1;
     private JButton btnConfirmer;
     private TypeOperation typeOperation;
     private JPanel pMontant;
@@ -24,6 +21,11 @@ public class PanneauOperation extends JPanel {
     private JTextField description;
     private JTextField destinataire;
 
+    /**
+     *
+     * @param type
+     * @param ecouteur
+     */
     public PanneauOperation(TypeOperation type, ActionListener ecouteur) {
         try {
             switch (type) {
@@ -67,7 +69,7 @@ public class PanneauOperation extends JPanel {
      */
     private void creerPanels() {
         content = new JPanel();
-        content.setLayout(new GridLayout(COLONNE, LIGNE, 5, 5));
+        content.setLayout(new GridLayout(COLONNE, LIGNE, ESPACE, ESPACE));
         content.add(tete);
         content.add(pMontant);
         content.add(btnConfirmer);
@@ -87,7 +89,7 @@ public class PanneauOperation extends JPanel {
     /**
      * @return
      */
-    public double getMontant() {
+    private double getMontant() {
         return Double.parseDouble(montant.getText());
     }
 
@@ -99,8 +101,6 @@ public class PanneauOperation extends JPanel {
         //TODO peut être mettre le code ici en TRY catch pour gérer les
         // cas d'exeptions (ex: si on ne met pas de valeur)
         try {
-
-
             switch (typeOperation) {
                 case DEPOT:
                     operation = new OperationDepot(getMontant());
