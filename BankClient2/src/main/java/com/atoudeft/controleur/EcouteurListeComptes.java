@@ -29,19 +29,20 @@ public class EcouteurListeComptes extends MouseAdapter {
      * Question 3.1 - Nancy Nguyen
      * Méthode vérifiant si l'événement est un double-clic, et extrait le type de compte sélectionné.
      * Renvoie la commande SELECT au compte sélectionné
+     *
      * @param evt l'événement à traiter
      */
     @Override
     public void mouseClicked(MouseEvent evt) {
         //1. Vérifier si l'événement est bien un double-clic
-        if(evt.getClickCount() == 2){
+        if (evt.getClickCount() == 2) {
 
             //2. Récupérer le compte sélectionné
             String compteSelectionne = (String) jList.getSelectedValue();
             System.out.println("Compte selectionne : " + compteSelectionne); //TODO test a enlever
 
             //3. Recuperation du type de compte
-            if(compteSelectionne != null ){
+            if (compteSelectionne != null) {
                 String typeCompte = extractionTypeCompte(compteSelectionne);
                 System.out.println("Type de compte: " + typeCompte); //TODO test a enlever
                 client.envoyer("SELECT");
@@ -53,19 +54,40 @@ public class EcouteurListeComptes extends MouseAdapter {
         }
     }
 
-    /**  Question 3.1 - Nancy Nguyen
+    /**
+     * Question 3.1 - Nancy Nguyen
      * Méthode qui extrait le type de compte
+     *
      * @param compte compte sélectionné
      * @return le type de compte
      */
-    private String extractionTypeCompte(String compte){
+    private String extractionTypeCompte(String compte) {
         int indexDebut = compte.indexOf('[');
         int indexFin = compte.indexOf(']');
 
-        if(indexDebut != -1 && indexFin != -1 && indexDebut < indexFin){
+        if (indexDebut != -1 && indexFin != -1 && indexDebut < indexFin) {
             //Extraire le type de compte entre les crochets
-            return compte.substring(indexDebut+1, indexFin);
+            return compte.substring(indexDebut + 1, indexFin);
         }
         return compte;
     }
+
+    public void mouseCliked(MouseEvent e) {
+        if (e.getClickCount() == 2) {
+            String compteSelectionne = (String) jList.getSelectedValue();
+            System.out.println("Compte selectionne :" + compteSelectionne);
+
+            if (compteSelectionne != null) {
+                String typeCompte = extractionTypeCompte(compteSelectionne);
+                System.out.println("Type de compte :" + typeCompte);
+                client.envoyer("SELECT " + typeCompte);
+            } else {
+                System.out.println("AUCUN COMPTE SELECTIONNE");
+                client.envoyer("SELECT NO");
+            }
+
+        }
+    }
 }
+
+

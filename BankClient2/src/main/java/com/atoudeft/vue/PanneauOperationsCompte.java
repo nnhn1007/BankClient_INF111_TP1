@@ -28,9 +28,14 @@ public class PanneauOperationsCompte extends JPanel {
         JPanel panneauSolde = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         panneauSolde.add(lblSolde);
 
-        this.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        this.add(panneauSolde);
+        lblSolde = new JLabel("Solde : 0.00$" );
+        lblSolde.setFont(new Font("Arial", Font.BOLD, 16));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.add(lblSolde);
+
+     //   this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+      //  this.add(panneauSolde);
+      //  this.add(lblSolde);
         this.add(bEpargne);
         this.add(bDepot);
         this.add(bRetrait);

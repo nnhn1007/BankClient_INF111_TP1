@@ -1,6 +1,7 @@
 package com.atoudeft.vue;
 
 import com.atoudeft.client.Client;
+import com.atoudeft.Operation.TypeOperation;
 import com.atoudeft.controleur.EcouteurConnexion;
 import com.atoudeft.controleur.EcouteurListeComptes;
 import com.atoudeft.controleur.EcouteurOperationsCompte;
@@ -19,6 +20,8 @@ public class PanneauPrincipal  extends JPanel {
     private PanneauConnexion panneauConnexion;
     private JPanel panneauCompteClient;
     private PanneauOperationsCompte panneauOperationsCompte;
+    private PanneauDepot panneauDepot;
+    private PanneauRetrait panneauRetrait;
 
 
     private DefaultListModel<String> numerosComptes;
@@ -36,11 +39,15 @@ public class PanneauPrincipal  extends JPanel {
 
         // Création des panneaux d'opérations.
         panneauOperationsCompte = new PanneauOperationsCompte();
+        panneauDepot= new PanneauDepot(TypeOperation.DEPOT,"DEPOT");
+        panneauRetrait= new PanneauRetrait();
 
         // Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
         EcouteurOperationsCompte ecouteurOperationsCompte = new EcouteurOperationsCompte(client, panneauCompteClient);
-        panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
 
+        panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
+        panneauDepot.setEcouteur(ecouteurOperationsCompte);
+        panneauRetrait.setEcouteur(ecouteurOperationsCompte);
 
         panneauCompteClient.setLayout(new BorderLayout());
         panneauCompteClient.setBackground(Color.WHITE);
@@ -97,8 +104,7 @@ public class PanneauPrincipal  extends JPanel {
         numerosComptes.addElement(str);
     }
 
-    public void setSoldeCompte(String arg){
-        double solde= (Double.parseDouble(arg));
-        this.panneauOperationsCompte.SetSolde(solde);
+    public PanneauOperationsCompte getPanneauOperationsCompte() {
+        return panneauOperationsCompte;
     }
 }
