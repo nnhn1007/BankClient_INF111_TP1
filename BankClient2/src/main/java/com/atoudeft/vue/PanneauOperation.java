@@ -83,7 +83,6 @@ public class PanneauOperation extends JPanel {
             case RETRAIT:
                 operation = new OperationRetrait(getMontant());
                 break;
-
         }
         return operation;
     }

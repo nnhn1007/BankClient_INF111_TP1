@@ -102,6 +102,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         arg = evenement.getArgument();
                         System.out.println("ICI :" + arg); //TODO TEST
                         arg = arg.substring(arg.indexOf("SELECT") + 3).trim();
+                        panneauPrincipal.setSoldeCompte(arg);
                         JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
                         break;
                     }

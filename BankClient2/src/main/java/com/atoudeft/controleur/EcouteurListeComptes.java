@@ -39,14 +39,15 @@ public class EcouteurListeComptes extends MouseAdapter {
 
             //2. Récupérer le compte sélectionné
             String compteSelectionne = (String) jList.getSelectedValue();
-            System.out.println("Compte selectionne : " + compteSelectionne); //TODO test a enlever
 
             //3. Recuperation du type de compte
             if (compteSelectionne != null) {
                 String typeCompte = extractionTypeCompte(compteSelectionne);
-                //TODO Peut être qu'il faudrait avoir le numéro de compte only et pas le type de compte?
-                System.out.println("Type de compte: " + typeCompte); //TODO test a enlever
-                client.envoyer("SELECT "+ compteSelectionne);
+                if(typeCompte.equals("CHEQUE")) {
+                    client.envoyer("SELECT cheque");
+                } else if (typeCompte.equals("EPARGNE")) {
+                    client.envoyer("SELECT epargne");
+                }
             }
         }
     }
@@ -67,23 +68,6 @@ public class EcouteurListeComptes extends MouseAdapter {
             return compte.substring(indexDebut + 1, indexFin);
         }
         return compte;
-    }
-
-    public void mouseCliked(MouseEvent e) {
-        if (e.getClickCount() == 2) {
-            String compteSelectionne = (String) jList.getSelectedValue();
-            System.out.println("Compte selectionne :" + compteSelectionne);
-
-            if (compteSelectionne != null) {
-                String typeCompte = extractionTypeCompte(compteSelectionne);
-                System.out.println("Type de compte :" + typeCompte);
-                client.envoyer("SELECT " + typeCompte);
-            } else {
-                System.out.println("AUCUN COMPTE SELECTIONNE");
-                client.envoyer("SELECT NO");
-            }
-
-        }
     }
 }
 
