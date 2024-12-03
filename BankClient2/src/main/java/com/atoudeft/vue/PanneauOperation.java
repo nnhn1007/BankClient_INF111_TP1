@@ -26,26 +26,28 @@ public class PanneauOperation extends JPanel {
 
     public PanneauOperation(TypeOperation type, ActionListener ecouteur) {
         try {
-
             switch (type) {
-
-                case DEPOT, RETRAIT:
+                case DEPOT, RETRAIT, FACTURE, TRANSFER:
                     this.typeOperation = type;
                     creerButton(ecouteur);
                     creerChampsMontant(type);
                     creerPanels();
                     add(content, BorderLayout.CENTER);
+
+                    switch (type) {
+                        case FACTURE:
+                            break;
+                        case TRANSFER:
+                            break;
+                    }
                     break;
-
-                case FACTURE:
-
             }
 
-        } catch(NullPointerException operationInexistante) {
+        } catch (NullPointerException operationInexistante) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Ce type d'opération n'est pas dans la liste disponible : "+operationInexistante,
-                    "Erreur de saisie",
+                    "Ce type d'opération n'est pas dans la liste disponible : " + operationInexistante,
+                    "ERREUR",
                     JOptionPane.ERROR_MESSAGE
             );
         }
@@ -96,13 +98,24 @@ public class PanneauOperation extends JPanel {
         Operation operation = null;
         //TODO peut être mettre le code ici en TRY catch pour gérer les
         // cas d'exeptions (ex: si on ne met pas de valeur)
-        switch (typeOperation) {
-            case DEPOT:
-                operation = new OperationDepot(getMontant());
-                break;
-            case RETRAIT:
-                operation = new OperationRetrait(getMontant());
-                break;
+        try {
+
+
+            switch (typeOperation) {
+                case DEPOT:
+                    operation = new OperationDepot(getMontant());
+                    break;
+                case RETRAIT:
+                    operation = new OperationRetrait(getMontant());
+                    break;
+            }
+        } catch (Exception gererException) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "L'opération que vous venez d'effectuer n'est pas possible ! :",
+                    "ERREUR",
+                    JOptionPane.ERROR_MESSAGE
+            );
         }
         return operation;
     }

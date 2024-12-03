@@ -100,9 +100,9 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         break;
                     } else {
                         arg = evenement.getArgument();
+                        System.out.println("ICI :" + arg); //TODO TEST
                         arg = arg.substring(arg.indexOf("SELECT") + 3).trim();
-                        double solde = extractionSolde(arg);
-                        panneauPrincipal.setSoldeCompte(String.valueOf(solde));
+                        panneauPrincipal.setSoldeCompte(arg);
                         JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
                         break;
                     }
@@ -112,6 +112,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     arg = arg.substring(arg.indexOf("DEPOT") + 3).trim();
                     panneauPrincipal.setSoldeCompte(arg);
                     JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT " + arg);
+
                     break;
                 case "RETRAIT":
                     arg = evenement.getArgument();
@@ -136,10 +137,5 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     System.out.println("RECU : " + evenement.getType() + " " + evenement.getArgument());
             }
         }
-    }
-    private double extractionSolde(String arg){
-        String[] t = arg.split(" ");
-        double solde = Double.parseDouble(t[1].trim());
-        return solde;
     }
 }
