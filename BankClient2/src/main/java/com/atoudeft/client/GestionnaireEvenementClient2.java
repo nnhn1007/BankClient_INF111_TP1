@@ -100,9 +100,8 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         break;
                     } else {
                         arg = evenement.getArgument();
-                        System.out.println("ICI :" + arg); //TODO TEST
                         arg = arg.substring(arg.indexOf("SELECT") + 3).trim();
-                        panneauPrincipal.setSoldeCompte(arg);
+
                         JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
                         break;
                     }
@@ -117,7 +116,8 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "RETRAIT":
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
-                        JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT REFUSÉ !");
+                        JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT REFUSÉ !"
+                        ,"ERREUR",JOptionPane.ERROR_MESSAGE);
                     } else {
                         arg = arg.substring(arg.indexOf("RETRAIT") + 3);
                         panneauPrincipal.setSoldeCompte(arg);
