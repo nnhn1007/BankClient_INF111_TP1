@@ -41,18 +41,16 @@ public class EcouteurOperationsCompte implements ActionListener {
             case "RETRAIT":
                 panneauOperation = new PanneauOperation(TypeOperation.RETRAIT, this);
                 break;
-            case "SELECT":
-                client.envoyer(commande);
-                break;
             case "TRANSFER":
                 break;
             case "FACTURE":
                 break;
             case "CONFIRMER":
+
                 assert panneauOperation != null;
                 operation = panneauOperation.getOperation();
                 if (operation != null) {
-                    client.envoyer(operation.gestionOperation());
+                    client.envoyer(operation.toString());
                 }
                 break;
 
@@ -70,7 +68,8 @@ public class EcouteurOperationsCompte implements ActionListener {
             panneauCompteClient.repaint(); // Rafraîchit l'affichage
         }
     }
-    private void enleverDerniereOperation(){
+
+    private void enleverDerniereOperation() {
         if (panneauOperation != null) {
             panneauCompteClient.remove(panneauOperation);
         }

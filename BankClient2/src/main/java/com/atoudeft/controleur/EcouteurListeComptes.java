@@ -44,12 +44,9 @@ public class EcouteurListeComptes extends MouseAdapter {
             //3. Recuperation du type de compte
             if (compteSelectionne != null) {
                 String typeCompte = extractionTypeCompte(compteSelectionne);
+                //TODO Peut être qu'il faudrait avoir le numéro de compte only et pas le type de compte?
                 System.out.println("Type de compte: " + typeCompte); //TODO test a enlever
-                client.envoyer("SELECT");
-
-            } else {
-                System.out.println("AUCUN COMPTE SELECTIONNE "); //TODO test a enlever
-                client.envoyer("SELECT NO");
+                client.envoyer("SELECT "+ compteSelectionne);
             }
         }
     }

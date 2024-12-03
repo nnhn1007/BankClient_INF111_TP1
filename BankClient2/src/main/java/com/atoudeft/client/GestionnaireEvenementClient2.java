@@ -86,6 +86,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     if (arg.trim().startsWith("NO")) {
                         JOptionPane.showMessageDialog(panneauPrincipal, "Création de compte" +
                                 " épargne refusée");
+                        break;
                     } else {
                         JOptionPane.showMessageDialog(panneauPrincipal, "EPARGNE " + arg);
                         str = arg.substring(arg.indexOf("OK") + 2).trim();
@@ -94,12 +95,17 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     break;
                 case "SELECT":
                     arg = evenement.getArgument();
-                    double solde = Double.parseDouble(arg.trim());
-                   // panneauPrincipal.getPanneauOperationsCompte().afficherSolde(solde);
-                    JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
-                    break;
-
-                /******************* OPÉRATIONS BANCAIRES *******************/
+                    if (arg.trim().startsWith("NO")) {
+                        JOptionPane.showMessageDialog(panneauPrincipal, "Connexion refusée");
+                        break;
+                    } else {
+                        arg = evenement.getArgument();
+                        System.out.println("ICI :" + arg); //TODO TEST
+                        arg = arg.substring(arg.indexOf("SELECT") + 3).trim();
+                        JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
+                        break;
+                    }
+                    /******************* OPÉRATIONS BANCAIRES *******************/
                 case "DEPOT":
                     arg = evenement.getArgument();
                     arg = arg.substring(arg.indexOf("DEPOT") + 3).trim();
