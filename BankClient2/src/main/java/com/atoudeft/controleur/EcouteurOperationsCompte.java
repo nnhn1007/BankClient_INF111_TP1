@@ -16,7 +16,7 @@ public class EcouteurOperationsCompte implements ActionListener {
     private Client client;
 
     JPanel panneauCompteClient;
-    PanneauOperation panneauOperation = null;
+    PanneauOperation panneauOperation;
     Operation operation;
 
     public EcouteurOperationsCompte(Client client, JPanel panneauCompteClient) {
@@ -44,18 +44,17 @@ public class EcouteurOperationsCompte implements ActionListener {
             case "TRANSFER":
                 break;
             case "FACTURE":
+                panneauOperation = new PanneauOperation(TypeOperation.FACTURE, this);
+                break;
+            case "HIST":
+                client.envoyer("HIST");
                 break;
             case "CONFIRMER":
-
                 assert panneauOperation != null;
                 operation = panneauOperation.getOperation();
                 if (operation != null) {
                     client.envoyer(operation.toString());
                 }
-                break;
-
-            case "HIST":
-                client.envoyer("HIST");
                 break;
         }
         redessinerInterface();

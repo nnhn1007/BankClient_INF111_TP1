@@ -6,13 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import com.atoudeft.Operation.*;
 
 /**
  *
  */
 public class PanneauOperation extends JPanel {
-    private static final int ESPACE = 15, COLONNE=0, LIGNE=1;
+    private static final int ESPACE = 15, COLONNE = 0, LIGNE = 1;
     private JButton btnConfirmer;
     private TypeOperation typeOperation;
     private JPanel pMontant;
@@ -24,13 +25,31 @@ public class PanneauOperation extends JPanel {
     private JTextField destinataire;
 
     public PanneauOperation(TypeOperation type, ActionListener ecouteur) {
-        this.typeOperation = type;
-        creerButton(ecouteur);
-        creerChampsMontant(type);
-        creerPanels();
-        add(content, BorderLayout.CENTER);
-    }
+        try {
 
+            switch (type) {
+
+                case DEPOT, RETRAIT:
+                    this.typeOperation = type;
+                    creerButton(ecouteur);
+                    creerChampsMontant(type);
+                    creerPanels();
+                    add(content, BorderLayout.CENTER);
+                    break;
+
+                case FACTURE:
+
+            }
+
+        } catch(NullPointerException operationInexistante) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Ce type d'opération n'est pas dans la liste disponible : "+operationInexistante,
+                    "Erreur de saisie",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
 
     /**
      * @param ecouteur
@@ -44,7 +63,7 @@ public class PanneauOperation extends JPanel {
     /**
      *
      */
-    private void creerPanels(){
+    private void creerPanels() {
         content = new JPanel();
         content.setLayout(new GridLayout(COLONNE, LIGNE, 5, 5));
         content.add(tete);
@@ -53,22 +72,23 @@ public class PanneauOperation extends JPanel {
     }
 
     /**
-     *
      * @param typeOperation
      */
-    private void creerChampsMontant(TypeOperation typeOperation){
+    private void creerChampsMontant(TypeOperation typeOperation) {
         tete = new JLabel(typeOperation.getAction(), SwingConstants.CENTER);
         pMontant = new JPanel();
         montant = new JTextField(8);
         pMontant.add(new JLabel("Montant:"));
-        pMontant.add(montant,  BorderLayout.SOUTH);
+        pMontant.add(montant, BorderLayout.SOUTH);
     }
+
     /**
      * @return
      */
     public double getMontant() {
         return Double.parseDouble(montant.getText());
     }
+
     /**
      *
      */
