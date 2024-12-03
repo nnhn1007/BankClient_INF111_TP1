@@ -41,5 +41,5 @@ public class OperationDepot extends Operation implements Serializable {
                 + "    MONTANT: " + this.montantDepot;
     }
     @Override
-    public String getCommandeServeur(){return "DEPOT"+ montantDepot;}
+    public String gestionOperation(){return "DEPOT "+ montantDepot;}
 }

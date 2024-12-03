@@ -3,7 +3,7 @@ package com.atoudeft.client;
 import com.atoudeft.commun.evenement.Evenement;
 import com.atoudeft.commun.evenement.GestionnaireEvenement;
 import com.atoudeft.commun.net.Connexion;
-import com.atoudeft.vue.panneauHistorique;
+import com.atoudeft.vue.panneauHistoriqueDuCompte;
 import com.atoudeft.vue.PanneauPrincipal;
 import com.programmes.MainFrame;
 
@@ -46,7 +46,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "HIST": //Le serveur a renvoyé
                     panneauPrincipal.setVisible(true);
                     arg = evenement.getArgument();
-                    JOptionPane.showMessageDialog(panneauPrincipal, new panneauHistorique(arg), "Historique" +
+                    JOptionPane.showMessageDialog(panneauPrincipal, new panneauHistoriqueDuCompte(arg), "Historique" +
                             " du compte", JOptionPane.PLAIN_MESSAGE);
                     cnx.envoyer("LIST");
                     break;
@@ -100,12 +100,19 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 /******************* OPÉRATIONS BANCAIRES *******************/
                 case "DEPOT":
                     arg = evenement.getArgument();
+                    arg = arg.substring(arg.indexOf("DEPOT") + 3).trim();
                     JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT " + arg);
-
+                    panneauPrincipal.setSoldeCompte(arg);
                     break;
                 case "RETRAIT":
                     arg = evenement.getArgument();
-                    JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT " + arg);
+                    if (arg.trim().startsWith("NO")) {
+                        JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT REFUSÉ !");
+                    } else {
+                        arg = arg.substring(arg.indexOf("RETRAIT") + 3);
+                        panneauPrincipal.setSoldeCompte(arg);
+                        JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT : " + arg);
+                    }
                     break;
                 case "FACTURE":
                     arg = evenement.getArgument();

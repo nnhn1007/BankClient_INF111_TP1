@@ -38,6 +38,7 @@ public class PanneauOperationsCompte extends JPanel {
         this.add(bFacture);
         this.add(bHistorique);
     }
+
     public void setEcouteur(ActionListener ecouteur) {
         bEpargne.addActionListener(ecouteur);
         bDepot.addActionListener(ecouteur);
@@ -46,7 +47,8 @@ public class PanneauOperationsCompte extends JPanel {
         bFacture.addActionListener(ecouteur);
         bHistorique.addActionListener(ecouteur);
     }
-    public void afficherSolde(double solde) {
-        lblSolde.setText(""+ solde);
+
+    public void SetSolde(double solde) {
+        lblSolde.setText("SOLDE : " + solde);// Comme dans les exos du prof
     }
 }

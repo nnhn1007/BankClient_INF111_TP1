@@ -1,66 +1,81 @@
 package com.atoudeft.controleur;
 
+import com.atoudeft.Operation.Operation;
 import com.atoudeft.client.Client;
-import com.atoudeft.vue.PanneauDepot;
 
 import javax.swing.*;
 
 import com.atoudeft.Operation.TypeOperation;
+import com.atoudeft.vue.PanneauOperation;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EcouteurOperationsCompte implements ActionListener {
-    private final Client client;
-    private PanneauDepot panneauDepot;
-    private JPanel panneauCompteClient;
+    private Client client;
 
+    JPanel panneauCompteClient;
+    PanneauOperation panneauOperation = null;
+    Operation operation;
 
-    public EcouteurOperationsCompte(Client client, JPanel panneauClient) {
+    public EcouteurOperationsCompte(Client client, JPanel panneauCompteClient) {
         this.client = client;
-        this.panneauCompteClient=panneauClient;
+        this.panneauCompteClient = panneauCompteClient;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        String action;
-        action = ((JButton) source).getActionCommand();
-        System.out.println(action);
-        switch (action) {
+        String commande = e.getActionCommand();
+        enleverDerniereOperation();
+
+        switch (commande) {
             case "EPARGNE":
-                client.lire();
-                client.envoyer(action);
-                break;
-            case "SELECT":
-                caseSelect(action);
+                client.envoyer(commande);
                 break;
             case "DEPOT":
-                caseDepot(action);
+                //TODO PS :this permet de rediriger les actions
+                //TODO de PanneauOperation vers le actionPerformed ici  (enlever le TODO à la fin).
+                panneauOperation = new PanneauOperation(TypeOperation.DEPOT, this);
                 break;
             case "RETRAIT":
-                client.envoyer(action);
+                panneauOperation = new PanneauOperation(TypeOperation.RETRAIT, this);
                 break;
-            case "FACTURE":
+            case "SELECT":
+                client.envoyer(commande);
                 break;
             case "TRANSFER":
                 break;
-            case "HIST":
-                client.envoyer(action);
+            case "FACTURE":
                 break;
-            /******************* TRAITEMENT PAR DÉFAUT *******************/
-            default:
-                System.out.println("COMMANDE: " + e.getActionCommand());
+            case "CONFIRMER":
+                assert panneauOperation != null;
+                operation = panneauOperation.getOperation();
+                if (operation != null) {
+                    client.envoyer(operation.gestionOperation());
+                }
+                break;
+
+            case "HIST":
+                client.envoyer("HIST");
+                break;
         }
-
+        redessinerInterface();
     }
 
-    private void caseSelect(String action) {
-      client.envoyer(action);
+    private void redessinerInterface() {
+        if (panneauOperation != null) {
+            panneauCompteClient.add(panneauOperation, BorderLayout.CENTER);
+            panneauCompteClient.revalidate(); // Réorganise les composants
+            panneauCompteClient.repaint(); // Rafraîchit l'affichage
+        }
     }
-
-    private void caseDepot(String action) {
-      panneauDepot = new PanneauDepot(TypeOperation.DEPOT,action);
+    private void enleverDerniereOperation(){
+        if (panneauOperation != null) {
+            panneauCompteClient.remove(panneauOperation);
+        }
     }
 }
+
+
 

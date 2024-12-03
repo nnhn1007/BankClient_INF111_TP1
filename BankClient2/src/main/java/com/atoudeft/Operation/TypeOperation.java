@@ -4,13 +4,18 @@ import java.io.Serializable;
 
 public enum TypeOperation implements Serializable {
     DEPOT("DEPOT"),
-    RETRAIT("Retirer"),
-    FACTURE("Facture"),
-    TRANSFER("Transfer");
+    RETRAIT("RETRAIT"),
+    FACTURE("FACURE"),
+    TRANSFER("TRANSFER");
 
     public final String action;
 
     TypeOperation(String action) {
         this.action = action;
     }
+
+    public String getAction() {
+        return action;
+    }
+
 }
