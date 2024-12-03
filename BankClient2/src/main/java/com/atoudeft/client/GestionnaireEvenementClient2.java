@@ -95,7 +95,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "SELECT":
                     arg = evenement.getArgument();
                     double solde = Double.parseDouble(arg.trim());
-                    panneauPrincipal.getPanneauOperationsCompte().afficherSolde(solde);
+                   // panneauPrincipal.getPanneauOperationsCompte().afficherSolde(solde);
                     JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
                     break;
 
@@ -103,8 +103,9 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "DEPOT":
                     arg = evenement.getArgument();
                     arg = arg.substring(arg.indexOf("DEPOT") + 3).trim();
-                    JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT " + arg);
                     panneauPrincipal.setSoldeCompte(arg);
+                    JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT " + arg);
+
                     break;
                 case "RETRAIT":
                     arg = evenement.getArgument();

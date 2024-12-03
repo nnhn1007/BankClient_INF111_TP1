@@ -10,18 +10,15 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author Abdelmoumène Toudeft (Abdelmoumene.Toudeft@etsmtl.ca)
  * @version 1.0
  * @since 2024-11-01
  */
-public class PanneauPrincipal  extends JPanel {
+public class PanneauPrincipal extends JPanel {
     private Client client;
     private PanneauConnexion panneauConnexion;
     private JPanel panneauCompteClient;
     private PanneauOperationsCompte panneauOperationsCompte;
-    private PanneauDepot panneauDepot;
-    private PanneauRetrait panneauRetrait;
 
 
     private DefaultListModel<String> numerosComptes;
@@ -33,21 +30,17 @@ public class PanneauPrincipal  extends JPanel {
         this.client = client;
 
         panneauConnexion = new PanneauConnexion();
-        panneauConnexion.setEcouteur(new EcouteurConnexion(client,panneauConnexion));
+        panneauConnexion.setEcouteur(new EcouteurConnexion(client, panneauConnexion));
         panneauCompteClient = new JPanel();
 
 
         // Création des panneaux d'opérations.
         panneauOperationsCompte = new PanneauOperationsCompte();
-        panneauDepot= new PanneauDepot(TypeOperation.DEPOT,"DEPOT");
-        panneauRetrait= new PanneauRetrait();
 
         // Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
         EcouteurOperationsCompte ecouteurOperationsCompte = new EcouteurOperationsCompte(client, panneauCompteClient);
-
         panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
-        panneauDepot.setEcouteur(ecouteurOperationsCompte);
-        panneauRetrait.setEcouteur(ecouteurOperationsCompte);
+
 
         panneauCompteClient.setLayout(new BorderLayout());
         panneauCompteClient.setBackground(Color.WHITE);
@@ -58,7 +51,7 @@ public class PanneauPrincipal  extends JPanel {
         jlNumerosComptes = new JList<>(numerosComptes);
         jlNumerosComptes.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
         jlNumerosComptes.setBorder(BorderFactory.createTitledBorder("Comptes bancaires"));
-        jlNumerosComptes.setPreferredSize(new Dimension(250,500));
+        jlNumerosComptes.setPreferredSize(new Dimension(250, 500));
 
 
         panneauCompteClient.add(panneauOperationsCompte, BorderLayout.NORTH);
@@ -81,20 +74,25 @@ public class PanneauPrincipal  extends JPanel {
         this.numerosComptes.clear();
         this.bureau.removeAll();
     }
+
     public void cacherPanneauConnexion() {
         panneauConnexion.effacer();
         panneauConnexion.setVisible(false);
     }
+
     public void montrerPanneauConnexion() {
         panneauConnexion.setVisible(true);
     }
+
     public void cacherPanneauCompteClient() {
         panneauCompteClient.setVisible(false);
         this.numerosComptes.clear();
     }
+
     public void montrerPanneauCompteClient() {
         panneauCompteClient.setVisible(true);
     }
+
     /**
      * Affiche un numéro de compte dans le JList des comptes.
      *
@@ -106,5 +104,10 @@ public class PanneauPrincipal  extends JPanel {
 
     public PanneauOperationsCompte getPanneauOperationsCompte() {
         return panneauOperationsCompte;
+    }
+
+    public void setSoldeCompte(String arg) {
+        double solde = (Double.parseDouble(arg));
+        this.panneauOperationsCompte.SetSolde(solde);
     }
 }
