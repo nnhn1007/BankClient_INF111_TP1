@@ -34,13 +34,15 @@ public class PanneauPrincipal extends JPanel {
         panneauCompteClient = new JPanel();
 
 
-        // Création des panneaux d'opérations.
+        /* Fait par Mathis Odjo'o Ada
+        Création des panneaux d'opérations */
         panneauOperationsCompte = new PanneauOperationsCompte();
 
-        // Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
+        /**
+         * Fait par Mathis Odjo'o Ada
+         * Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas) */
         EcouteurOperationsCompte ecouteurOperationsCompte = new EcouteurOperationsCompte(client, panneauCompteClient);
         panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
-
 
         panneauCompteClient.setLayout(new BorderLayout());
         panneauCompteClient.setBackground(Color.WHITE);
@@ -56,6 +58,7 @@ public class PanneauPrincipal extends JPanel {
 
         panneauCompteClient.add(panneauOperationsCompte, BorderLayout.NORTH);
         panneauCompteClient.add(jlNumerosComptes, BorderLayout.WEST);
+
         //Enregistrement de l'écouteur de souris:
         jlNumerosComptes.addMouseListener(new EcouteurListeComptes(client, jlNumerosComptes));
 
@@ -102,10 +105,11 @@ public class PanneauPrincipal extends JPanel {
         numerosComptes.addElement(str);
     }
 
-    public PanneauOperationsCompte getPanneauOperationsCompte() {
-        return panneauOperationsCompte;
-    }
-
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Met à jour le solde du compte dans le panneau des opérations (panneauOperationsCompte)
+     * @param arg chaîne représentant le solde du compte à afficher
+     */
     public void setSoldeCompte(String arg) {
         double solde = (Double.parseDouble(arg));
         this.panneauOperationsCompte.SetSolde(solde);
