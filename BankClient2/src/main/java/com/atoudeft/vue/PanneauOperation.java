@@ -21,11 +21,12 @@ public class PanneauOperation extends JPanel {
     private JTextField montant;
     private JTextField texteNumerofacture;
     private JTextField texteDescription;
-    private JTextField destinataire;
+    private JTextField compteDestinataire;
 
     /**
-     * @param type
-     * @param ecouteur
+     * Constructeur initialisant un panneau d'opérations
+     * @param type type d'opération à effectuer (DEPOT, RETRAIT, FACTURE ou TRANSFER)
+     * @param ecouteur écouteur gestionnaire d'événement du bouton 'CONFIRMER'
      */
     public PanneauOperation(TypeOperation type, ActionListener ecouteur) {
         content = new JPanel();
@@ -40,6 +41,7 @@ public class PanneauOperation extends JPanel {
                     creerChampsMontant();
                     switch (type) {
                         case FACTURE -> dessinerFacture();
+                        case TRANSFER -> dessinerTransfert();
                     }
                     break;
             }
@@ -55,8 +57,8 @@ public class PanneauOperation extends JPanel {
         }
     }
 
-    /**
-     * @param ecouteur
+    /** Méthode qui crée et configure le bouton 'CONFIRMER' du panneau
+     * @param ecouteur écouteur d'événements pour le bouton 'CONFIRMER'
      */
     private void creerButton(ActionListener ecouteur) {
         btnConfirmer = new JButton("CONFIRMER");
@@ -65,7 +67,8 @@ public class PanneauOperation extends JPanel {
     }
 
     /**
-     *
+     * @author
+     * Méthode qui configure les panneaux en organisant leurs composantes
      */
     private void creerPanels() {
 
@@ -75,7 +78,7 @@ public class PanneauOperation extends JPanel {
     }
 
     /**
-     *
+     * Méthode qui crée un champ de texte pour saisir le montant d'une opération
      */
     private void creerChampsMontant() {
         pMontant = new JPanel();
@@ -85,14 +88,16 @@ public class PanneauOperation extends JPanel {
     }
 
     /**
-     * @return
+     * Méthode qui retourne le montant saisi par l'utilisateur
+     * @return montant saisi par l'utilisateur
      */
     private double getMontant() {
         return Double.parseDouble(montant.getText());
     }
 
     /**
-     *
+     * Méthode qui récupère l'opération que l'utilisateur effectue
+     * @return instance d'Operation représentant son type
      */
     public Operation getOperation() {
         Operation operation = null;
@@ -107,7 +112,10 @@ public class PanneauOperation extends JPanel {
                     operation = new OperationRetrait(getMontant());
                     break;
                 case FACTURE:
-                    operation= new OperationFacture(getMontant(),getNumeroFacture(texteNumerofacture),getDesription(texteDescription));
+                    operation= new OperationFacture(getMontant(),getNumeroFacture(texteNumerofacture),getDescription(texteDescription));
+                    break;
+                case TRANSFER:
+                    operation = new OperationTransfer(getMontant(),getNumeroCompteDestinataire(compteDestinataire));
                     break;
             }
         } catch (Exception gererException) {
@@ -121,6 +129,10 @@ public class PanneauOperation extends JPanel {
         return operation;
     }
 
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Méthode configurant les champs de saisie et des étiquettes pour l'opération FACTURE
+     */
     private void dessinerFacture() {
         JPanel champNumeroFacture = new JPanel();
         champNumeroFacture.add(new JLabel("Numero de facture : "), SwingConstants.CENTER);
@@ -134,13 +146,49 @@ public class PanneauOperation extends JPanel {
         champDescriptionFacture.add(texteDescription);
         content.add(champDescriptionFacture);
     }
-    private String getDesription(JTextField texteDescription){
+
+    /** Fait par Mathis Odjo'o Ada
+     * Méthode configurant les champs de saisie et des étiquettes pour l'opération TRANSFER
+     */
+    private void dessinerTransfert(){
+        JPanel champCompteDestinataire = new JPanel();
+        champCompteDestinataire.add(new JLabel("Compte Destinataire : "), SwingConstants.CENTER);
+        compteDestinataire = new JTextField(14);
+        champCompteDestinataire.add(compteDestinataire);
+        content.add(champCompteDestinataire);
+    }
+
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Accesseur: Récupère la description de la facture
+     * @param texteDescription champ de texte pour la description de la facture
+     * @return le champ de texte saisi dans 'texteDescription' par le client
+     */
+    private String getDescription(JTextField texteDescription){
         System.out.println(texteDescription.getText());
         return texteDescription.getText();
     }
+
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Accesseur: Récupère le numéro de la facture
+     * @param numerofacture  numéro de la facture saisie
+     * @return le numéro de la facture saisi par le client
+     */
     private String getNumeroFacture(JTextField numerofacture){
         System.out.println(numerofacture.getText());
         return numerofacture.getText();
+    }
+
+    /**
+     * Fait par Nancy Nguyen
+     * Accesseur: Récupère le numéro de compte du compte destinataire
+     * @param compteDestinataire  nnuméro du compte destinataire
+     * @return le numéro du compte destinataire
+     */
+    private String getNumeroCompteDestinataire(JTextField compteDestinataire){
+        System.out.println(compteDestinataire.getText());
+        return compteDestinataire.getText();
     }
 
 }

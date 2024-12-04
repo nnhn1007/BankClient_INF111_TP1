@@ -2,6 +2,7 @@ package com.atoudeft.Operation;
 
 import com.atoudeft.Operation.TypeOperation;
 
+import javax.swing.*;
 import java.io.Serializable;
 
 /**
@@ -39,13 +40,14 @@ public class OperationTransfer extends Operation implements Serializable {
     }
 
     /**
-     * Fait par Melissa Sehad
+     * Fait par Nancy Nguyen
      * Methode qui retourne le numero de compte du destinataire
      *
      * @return le numero de compte du destinataire
      */
-    public String getNumeroCompteDestinataire() {
-        return numeroCompteDestinataire;
+
+    public String getNumeroCompteDestinataire(JTextField numeroCompteDestinataire) {
+        return String.valueOf(numeroCompteDestinataire.getText());
     }
 
     /**
@@ -55,6 +57,7 @@ public class OperationTransfer extends Operation implements Serializable {
      * @return chaîne de format: DATE: [date]    TYPE: [type]    MONTANT: [montant]
      */
     public String toString() {
-        return "TRANSFER : " + montantTransfer;
+        return "TRANSFER " + " " + montantTransfer + " " + numeroCompteDestinataire;
     }
+
 }

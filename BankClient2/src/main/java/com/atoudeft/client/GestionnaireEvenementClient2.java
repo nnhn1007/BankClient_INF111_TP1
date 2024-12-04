@@ -93,7 +93,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         panneauPrincipal.ajouterCompte(str);
                     }
                     break;
-                case "SELECT":
+                case "SELECT": // Question 3.1 - Nancy Nguyen et Mathis Odjo'o Ada
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
                         JOptionPane.showMessageDialog(panneauPrincipal, "Connexion refusée");
@@ -128,16 +128,21 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     arg = evenement.getArgument();
                     if(arg.trim().startsWith("NO")){
                         JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE REFUSÉ !");
-                    }
-                    else{
+                    } else {
                         arg = arg.substring(arg.indexOf("FACTURE") + 3);
                         panneauPrincipal.setSoldeCompte(arg);
                         JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE : " + arg);
                     }
                     break;
-                case "TRANSFER":
+                case "TRANSFER": //Question 4.3 - Nancy Nguyen
                     arg = evenement.getArgument();
-                    JOptionPane.showMessageDialog(panneauPrincipal, "TRANSFER " + arg);
+                    if(arg.trim().startsWith("NO")){
+                        JOptionPane.showMessageDialog(panneauPrincipal,"TRANFERT REFUSÉ");
+                    } else {
+                        arg = arg.substring(arg.indexOf("TRANSFER") + 3);
+                        panneauPrincipal.setSoldeCompte(arg);
+                        JOptionPane.showMessageDialog(panneauPrincipal, "TRANSFER : " + arg);
+                    }
                     break;
                 /******************* TRAITEMENT PAR DÉFAUT *******************/
                 default:
@@ -145,6 +150,12 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
             }
         }
     }
+
+    /**
+     * Question 3.1 - Nancy Nguyen
+     * @param arg
+     * @return le solde
+     */
     private double extractionSolde(String arg){
         String[] t = arg.split(" ");
         double solde = Double.parseDouble(t[1]);

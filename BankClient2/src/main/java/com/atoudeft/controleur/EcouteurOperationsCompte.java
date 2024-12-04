@@ -42,6 +42,7 @@ public class EcouteurOperationsCompte implements ActionListener {
                 panneauOperation = new PanneauOperation(TypeOperation.RETRAIT, this);
                 break;
             case "TRANSFER":
+                panneauOperation = new PanneauOperation(TypeOperation.TRANSFER, this);
                 break;
             case "FACTURE":
                 panneauOperation = new PanneauOperation(TypeOperation.FACTURE, this);
