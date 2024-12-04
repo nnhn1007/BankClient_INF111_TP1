@@ -27,7 +27,7 @@ public class EcouteurOperationsCompte implements ActionListener {
     @Override
     /**
      * Fait par Mathis Odjo'o Ada
-     * MMéthode qui traite les commandes envoyées par le GUI
+     * Méthode qui traite les commandes envoyées par le GUI
      */
     public void actionPerformed(ActionEvent e) {
         String commande = e.getActionCommand();
