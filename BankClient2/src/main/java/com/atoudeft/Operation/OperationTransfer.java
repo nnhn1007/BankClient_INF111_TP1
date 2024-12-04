@@ -45,16 +45,15 @@ public class OperationTransfer extends Operation implements Serializable {
      *
      * @return le numero de compte du destinataire
      */
-
     public String getNumeroCompteDestinataire(JTextField numeroCompteDestinataire) {
         return String.valueOf(numeroCompteDestinataire.getText());
     }
 
     /**
-     * Q7.3 - Fait par Nancy Nguyen et Melissa Sehad
-     * Décrit l'opération de transfert, incluant la date, le type, et le montant de transfert
+     * Fait par Nancy Nguyen et Melissa Sehad
+     * Décrit les détails de transaction (Transfer): montant du transferte et numéro de compte destinataire
      *
-     * @return chaîne de format: DATE: [date]    TYPE: [type]    MONTANT: [montant]
+     * @return chaîne de format: "TRANSFER [montantTransfer] [numeroCompteDestinataire]"
      */
     public String toString() {
         return "TRANSFER " + " " + montantTransfer + " " + numeroCompteDestinataire;
