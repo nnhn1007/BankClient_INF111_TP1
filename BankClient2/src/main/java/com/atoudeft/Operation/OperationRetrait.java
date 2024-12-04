@@ -42,6 +42,14 @@ public class OperationRetrait extends Operation implements Serializable {
      *
      * @return chaîne de format:  DATE: [date]    TYPE: [type]    MONTANT: [montant]
      */
+
+    /**
+     * Fait par Nancy Nguyen et Melissa Sehad
+     * Décrit les détails de transaction (paiement de facture ):
+     *      - montant, numéro de facture, et description de la facture
+     *
+     * @return chaîne de format: "FACTURE [montantFacture]  [numéroFacture]  [descriptionFacture]
+     */
     public String toString() {
         return "RETRAIT " + montantRetrait;
     }

@@ -69,9 +69,6 @@ public class OperationFacture extends Operation {
      * @return chaîne de format: "FACTURE [montantFacture]  [numéroFacture]  [descriptionFacture]
      */
     public String toString() {
-        //Selon la méthode du prof dans banqueServeur
         return "FACTURE " + " "+ montantFacture + " " + numeroFacture+ " " + descriptionFacture;
     }
-
-
 }
