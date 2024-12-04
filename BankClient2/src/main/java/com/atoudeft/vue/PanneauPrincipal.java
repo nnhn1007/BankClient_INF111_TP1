@@ -108,6 +108,7 @@ public class PanneauPrincipal extends JPanel {
     /**
      * Fait par Mathis Odjo'o Ada
      * Met à jour le solde du compte dans le panneau des opérations (panneauOperationsCompte)
+     *
      * @param arg chaîne représentant le solde du compte à afficher
      */
     public void setSoldeCompte(String arg) {
