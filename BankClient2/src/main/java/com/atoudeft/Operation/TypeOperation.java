@@ -11,24 +11,16 @@ import java.io.Serializable;
  */
 public enum TypeOperation implements Serializable {
 
-    /**
-     * Opération de dépôt d'argent
-     */
+    /** Opération de dépôt d'argent */
     DEPOT("DEPOT"),
 
-    /**
-     * Opération de retrait d'argent
-     */
+    /** Opération de retrait d'argent */
     RETRAIT("RETRAIT"),
 
-    /**
-     * Opération de paiement de facture
-     */
+    /** Opération de paiement de facture */
     FACTURE("FACTURE"),
 
-    /**
-     * Opération de transfert d'argent
-     */
+    /** Opération de transfert d'argent */
     TRANSFER("TRANSFER");
 
     //Chaîne de caractères représentant l'opération
@@ -36,6 +28,7 @@ public enum TypeOperation implements Serializable {
 
     /**
      * Constructeur de TypeOperation permettant d'associer 'action' à son type d'opération
+     *
      * @param action chaîne de caractères représentant l'opération
      */
     TypeOperation(String action) {
@@ -44,6 +37,7 @@ public enum TypeOperation implements Serializable {
 
     /**
      * Méthode qui retourne l'action (l'opération) associée à son type d'opération respectif
+     *
      * @return chaîne de caractères représentant l'opération
      */
     public String getAction() {
