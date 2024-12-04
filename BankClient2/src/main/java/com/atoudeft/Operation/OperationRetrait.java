@@ -48,7 +48,7 @@ public class OperationRetrait extends Operation implements Serializable {
      * Décrit les détails de transaction (paiement de facture ):
      *      - montant, numéro de facture, et description de la facture
      *
-     * @return chaîne de format: "FACTURE [montantFacture]  [numéroFacture]  [descriptionFacture]
+     * @return chaîne de format: "RETRAIT [montantRetrait]  [numéroFacture]  [descriptionFacture]
      */
     public String toString() {
         return "RETRAIT " + montantRetrait;

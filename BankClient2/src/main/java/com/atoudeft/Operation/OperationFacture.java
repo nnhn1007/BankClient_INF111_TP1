@@ -66,7 +66,7 @@ public class OperationFacture extends Operation {
      * Décrit les détails de transaction (paiement de facture ):
      *      - montant, numéro de facture, et description de la facture
      *
-     * @return chaîne de format: "FACTURE [montantFacture]  [numéroFacture]  [descriptionFacture]
+     * @return chaîne de format: "FACTURE [montantFacture]  [numéroFacture]  [descriptionFacture]"
      */
     public String toString() {
         return "FACTURE " + " "+ montantFacture + " " + numeroFacture+ " " + descriptionFacture;
