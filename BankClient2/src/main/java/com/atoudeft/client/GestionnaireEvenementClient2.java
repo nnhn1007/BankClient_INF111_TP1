@@ -81,7 +81,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     }
                     break;
                 /******************* SÉLECTION DE COMPTES *******************/
-                case "EPARGNE":
+                case "EPARGNE": // Question 2.1 - Fait par Mathis Odjo'o Ada
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
                         JOptionPane.showMessageDialog(panneauPrincipal, "Création de compte" +
@@ -93,7 +93,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         panneauPrincipal.ajouterCompte(str);
                     }
                     break;
-                case "SELECT": // Question 3.1 - Nancy Nguyen et Mathis Odjo'o Ada
+                case "SELECT": //Question 3.1 - Fait parNancy Nguyen et Mathis Odjo'o Ada
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
                         JOptionPane.showMessageDialog(panneauPrincipal, "Connexion refusée");
@@ -110,11 +110,11 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "DEPOT":
                     arg = evenement.getArgument();
                     arg = arg.substring(arg.indexOf("DEPOT") + 3).trim();
-                    panneauPrincipal.setSoldeCompte(arg);
+                    panneauPrincipal.setSoldeCompte(arg); // Ajouté par Mathis Odjo'o Ada
                     JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT " + arg);
 
                     break;
-                case "RETRAIT":
+                case "RETRAIT": // Question 4.3 - Fait par Mathis Odjo'o Ada
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
                         JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT REFUSÉ !");
@@ -124,7 +124,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT : " + arg);
                     }
                     break;
-                case "FACTURE":
+                case "FACTURE": // Question 4.3 - Fait par Mathis Odjo'o Ada
                     arg = evenement.getArgument();
                     if(arg.trim().startsWith("NO")){
                         JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE REFUSÉ !");
@@ -134,7 +134,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE : " + arg);
                     }
                     break;
-                case "TRANSFER": //Question 4.3 - Nancy Nguyen
+                case "TRANSFER": //Question 4.3 - Fait par Nancy Nguyen
                     arg = evenement.getArgument();
                     if(arg.trim().startsWith("NO")){
                         JOptionPane.showMessageDialog(panneauPrincipal,"TRANFERT REFUSÉ");
@@ -152,9 +152,10 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
     }
 
     /**
-     * Question 3.1 - Nancy Nguyen
-     * @param arg
-     * @return le solde
+     * Question 3.1 - Fait par Nancy Nguyen
+     * Méthode qui récupère le solde d'une chaîne de caractère
+     * @param arg chaîne de caractère
+     * @return le solde extrait
      */
     private double extractionSolde(String arg){
         String[] t = arg.split(" ");
