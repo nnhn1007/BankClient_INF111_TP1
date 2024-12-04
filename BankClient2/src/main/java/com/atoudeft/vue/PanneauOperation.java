@@ -25,7 +25,8 @@ public class PanneauOperation extends JPanel {
 
     /**
      * Constructeur initialisant un panneau d'opérations
-     * @param type type d'opération à effectuer (DEPOT, RETRAIT, FACTURE ou TRANSFER)
+     *
+     * @param type     type d'opération à effectuer (DEPOT, RETRAIT, FACTURE ou TRANSFER)
      * @param ecouteur écouteur gestionnaire d'événement du bouton 'CONFIRMER'
      */
     public PanneauOperation(TypeOperation type, ActionListener ecouteur) {
@@ -161,6 +162,7 @@ public class PanneauOperation extends JPanel {
     /**
      * Fait par Mathis Odjo'o Ada
      * Accesseur: Récupère la description de la facture
+     *
      * @param texteDescription champ de texte pour la description de la facture
      * @return le champ de texte saisi dans 'texteDescription' par le client
      */
@@ -172,6 +174,7 @@ public class PanneauOperation extends JPanel {
     /**
      * Fait par Mathis Odjo'o Ada
      * Accesseur: Récupère le numéro de la facture
+     *
      * @param numerofacture  numéro de la facture saisie
      * @return le numéro de la facture saisi par le client
      */
@@ -183,6 +186,7 @@ public class PanneauOperation extends JPanel {
     /**
      * Fait par Nancy Nguyen
      * Accesseur: Récupère le numéro de compte du compte destinataire
+     *
      * @param compteDestinataire  nnuméro du compte destinataire
      * @return le numéro du compte destinataire
      */
