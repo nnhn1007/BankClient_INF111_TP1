@@ -51,7 +51,7 @@ public class EcouteurMenuPrincipal implements ActionListener {
                     }
                     break;
                 case "CONFIGURER":
-                    //Fait par Mathis Odjo'o Ada
+                    //Question 1.3 - Fait par Mathis Odjo'o Ada
                     if (!client.isConnecte()) { // Vérifie si l'utilisateur n'est pas déja connecté sur un serveur
                         boolean config = true;
                         PanneauConfigServeur configurationPanel = new PanneauConfigServeur(client.getAdrServeur(), client.getPortServeur());
