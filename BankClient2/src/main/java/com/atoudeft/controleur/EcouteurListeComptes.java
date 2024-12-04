@@ -53,7 +53,7 @@ public class EcouteurListeComptes extends MouseAdapter {
     }
 
     /**
-     * Question 3.1 - Nancy Nguyen
+     * Question 3.1 - Fait par Nancy Nguyen
      * Méthode qui extrait le type de compte
      *
      * @param compte compte sélectionné

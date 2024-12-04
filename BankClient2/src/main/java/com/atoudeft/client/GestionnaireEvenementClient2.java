@@ -154,6 +154,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
     /**
      * Question 3.1 - Fait par Nancy Nguyen
      * Méthode qui récupère le solde d'une chaîne de caractère
+     *
      * @param arg chaîne de caractère
      * @return le solde extrait
      */
