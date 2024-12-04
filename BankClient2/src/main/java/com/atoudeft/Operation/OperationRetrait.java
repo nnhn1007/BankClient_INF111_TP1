@@ -37,23 +37,13 @@ public class OperationRetrait extends Operation implements Serializable {
     }
 
     /**
-     * Q7.3 - Fait par Nancy Nguyen et Melissa Sehad
-     * Décrit les détails du retrait: la date, le type, et le montant
-     *
-     * @return chaîne de format:  DATE: [date]    TYPE: [type]    MONTANT: [montant]
-     */
-
-    /**
      * Fait par Nancy Nguyen et Melissa Sehad
-     * Décrit les détails de transaction (paiement de facture ):
-     *      - montant, numéro de facture, et description de la facture
+     * Décrit les détails de transaction (Retrait): montant du retrait
      *
-     * @return chaîne de format: "RETRAIT [montantRetrait]  [numéroFacture]  [descriptionFacture]
+     * @return chaîne de format: "RETRAIT [montantRetrait]"
      */
     public String toString() {
         return "RETRAIT " + montantRetrait;
     }
-
-
 }
 
