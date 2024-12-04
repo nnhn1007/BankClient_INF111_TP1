@@ -37,7 +37,7 @@ public class OperationDepot extends Operation implements Serializable {
      * Fait par Nancy Nguyen et Melissa Sehad
      * Décrit les détails du dépôt:la date, le type, et le montant
      *
-     * @return chaîne de format: DATE: [date]    TYPE: [type]    MONTANT: [montant]
+     * @return chaîne de format: "DEPOT [montantDepot]"
      */
     public String toString() {
         return "DEPOT " + montantDepot;
