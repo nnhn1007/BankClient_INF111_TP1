@@ -27,8 +27,8 @@ public class EcouteurListeComptes extends MouseAdapter {
 
     /**
      * Question 3.1 - Nancy Nguyen
-     * Méthode vérifiant si l'événement est un double-clic, et extrait le type de compte sélectionné.
-     * Renvoie la commande SELECT au compte sélectionné
+     * Méthode vérifiant si l'événement est un double-clic, et extrait le type de compte sélectionné
+     * Renvoie la commande SELECT au compte sélectionné (chèque ou épargne)
      *
      * @param evt l'événement à traiter
      */
