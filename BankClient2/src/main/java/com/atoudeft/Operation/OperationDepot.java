@@ -35,7 +35,7 @@ public class OperationDepot extends Operation implements Serializable {
 
     /**
      * Fait par Nancy Nguyen et Melissa Sehad
-     * Décrit les détails de transaction (dépôt) et le montant de transaction
+     * Décrit les détails de transaction (dépôt) : montant de dépôt
      *
      * @return chaîne de format: "DEPOT [montantDepot]"
      */
