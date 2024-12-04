@@ -63,9 +63,10 @@ public class OperationFacture extends Operation {
 
     /**
      * Fait par Nancy Nguyen et Melissa Sehad
-     * Décrit les détails du paiement de facture: la date, le type, et le montant
+     * Décrit les détails de transaction (paiement de facture ):
+     *      - montant, numéro de facture, et description de la facture
      *
-     * @return chaîne de format: DATE: [date]    TYPE: [type]    MONTANT: [montant]
+     * @return chaîne de format: "FACTURE [montantFacture]  [numéroFacture]  [descriptionFacture]
      */
     public String toString() {
         //Selon la méthode du prof dans banqueServeur
