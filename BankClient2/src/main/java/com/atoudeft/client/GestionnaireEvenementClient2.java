@@ -126,7 +126,14 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     break;
                 case "FACTURE":
                     arg = evenement.getArgument();
-                    JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE" + arg);
+                    if(arg.trim().startsWith("NO")){
+                        JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE REFUSÉ !");
+                    }
+                    else{
+                        arg = arg.substring(arg.indexOf("FACTURE") + 3);
+                        panneauPrincipal.setSoldeCompte(arg);
+                        JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE : " + arg);
+                    }
                     break;
                 case "TRANSFER":
                     arg = evenement.getArgument();

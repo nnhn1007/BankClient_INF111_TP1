@@ -5,7 +5,7 @@ import java.io.Serializable;
 public enum TypeOperation implements Serializable {
     DEPOT("DEPOT"),
     RETRAIT("RETRAIT"),
-    FACTURE("FACURE"),
+    FACTURE("FACTURE"),
     TRANSFER("TRANSFER");
 
     public final String action;

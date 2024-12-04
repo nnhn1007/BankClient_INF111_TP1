@@ -2,6 +2,8 @@ package com.atoudeft.Operation;
 
 import com.atoudeft.Operation.TypeOperation;
 
+import javax.swing.*;
+
 /**
  * La classe OperationFacture représente les operations de paiement de facture
  * Elle est une sous-classe de la classe Operation et stocke les détails du paiement de facture;
@@ -45,8 +47,8 @@ public class OperationFacture extends Operation {
      *
      * @return le numero de la facture
      */
-    public String getNumeroFacture() {
-        return numeroFacture;
+    public String getNumeroFacture(JTextField numeroFacture) {
+        return String.valueOf(numeroFacture);
     }
 
     /**
@@ -55,8 +57,8 @@ public class OperationFacture extends Operation {
      *
      * @return la description de la facture
      */
-    public String getDescriptionFacture() {
-        return descriptionFacture;
+    public String getDescriptionFacture(JTextField descriptionFacture) {
+        return String.valueOf(descriptionFacture);
     }
 
     /**
@@ -66,7 +68,8 @@ public class OperationFacture extends Operation {
      * @return chaîne de format: DATE: [date]    TYPE: [type]    MONTANT: [montant]
      */
     public String toString() {
-        return "FACTURE : " + montantFacture;
+        //Selon la méthode du prof dans banqueServeur
+        return "FACTURE " + " "+ montantFacture + " " + numeroFacture+ " " + descriptionFacture;
     }
 
 

@@ -1,54 +1,54 @@
 package com.atoudeft.vue;
 
 import com.atoudeft.Operation.TypeOperation;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+
 import com.atoudeft.Operation.*;
 
 /**
  *
  */
 public class PanneauOperation extends JPanel {
-    private static final int ESPACE =5 , COLONNE = 0, LIGNE = 1;
+    private static final int ESPACE = 5, COLONNE = 0, LIGNE = 1;
     private JButton btnConfirmer;
     private TypeOperation typeOperation;
     private JPanel pMontant;
-    private JLabel tete;
+    private JLabel titre;
     private JPanel content;
     private JTextField montant;
-    private JTextField facture;
-    private JTextField description;
+    private JTextField texteNumerofacture;
+    private JTextField texteDescription;
     private JTextField destinataire;
 
     /**
-     *
      * @param type
      * @param ecouteur
      */
     public PanneauOperation(TypeOperation type, ActionListener ecouteur) {
+        content = new JPanel();
         try {
             switch (type) {
                 case DEPOT, RETRAIT, FACTURE, TRANSFER:
                     this.typeOperation = type;
-                    creerButton(ecouteur);
-                    creerChampsMontant(type);
-                    creerPanels();
-                    add(content, BorderLayout.CENTER);
+                    titre = new JLabel(typeOperation.getAction(), SwingConstants.CENTER);
+                    content.add(titre);
 
+                    creerButton(ecouteur);
+                    creerChampsMontant();
                     switch (type) {
-                        case FACTURE:
-                            break;
-                        case TRANSFER:
-                            break;
+                        case FACTURE -> dessinerFacture();
                     }
                     break;
             }
-
+            creerPanels();
+            add(content, BorderLayout.CENTER);
         } catch (NullPointerException operationInexistante) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Ce type d'opération n'est pas dans la liste disponible : " + operationInexistante,
+                    "Ce type d'opération n'est pas dans la liste disponible",
                     "ERREUR",
                     JOptionPane.ERROR_MESSAGE
             );
@@ -68,18 +68,16 @@ public class PanneauOperation extends JPanel {
      *
      */
     private void creerPanels() {
-        content = new JPanel();
-        content.setLayout(new GridLayout(COLONNE, LIGNE, ESPACE, ESPACE));
-        content.add(tete);
+
+        content.setLayout(new GridLayout(COLONNE, LIGNE));
         content.add(pMontant);
         content.add(btnConfirmer);
     }
 
     /**
-     * @param typeOperation
+     *
      */
-    private void creerChampsMontant(TypeOperation typeOperation) {
-        tete = new JLabel(typeOperation.getAction(), SwingConstants.CENTER);
+    private void creerChampsMontant() {
         pMontant = new JPanel();
         montant = new JTextField(8);
         pMontant.add(new JLabel("Montant:"));
@@ -108,6 +106,9 @@ public class PanneauOperation extends JPanel {
                 case RETRAIT:
                     operation = new OperationRetrait(getMontant());
                     break;
+                case FACTURE:
+                    operation= new OperationFacture(getMontant(),getNumeroFacture(texteNumerofacture),getDesription(texteDescription));
+                    break;
             }
         } catch (Exception gererException) {
             JOptionPane.showMessageDialog(
@@ -118,6 +119,28 @@ public class PanneauOperation extends JPanel {
             );
         }
         return operation;
+    }
+
+    private void dessinerFacture() {
+        JPanel champNumeroFacture = new JPanel();
+        champNumeroFacture.add(new JLabel("Numero de facture : "), SwingConstants.CENTER);
+        texteNumerofacture = new JTextField(10);
+        champNumeroFacture.add(texteNumerofacture);
+        content.add(champNumeroFacture);
+
+        JPanel champDescriptionFacture = new JPanel();
+        champDescriptionFacture.add(new JLabel("Description : "), SwingConstants.CENTER);
+        texteDescription = new JTextField(14);
+        champDescriptionFacture.add(texteDescription);
+        content.add(champDescriptionFacture);
+    }
+    private String getDesription(JTextField texteDescription){
+        System.out.println(texteDescription.getText());
+        return texteDescription.getText();
+    }
+    private String getNumeroFacture(JTextField numerofacture){
+        System.out.println(numerofacture.getText());
+        return numerofacture.getText();
     }
 
 }
