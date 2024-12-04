@@ -25,6 +25,10 @@ public class EcouteurOperationsCompte implements ActionListener {
     }
 
     @Override
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * MMéthode qui traite les commandes envoyées par le GUI
+     */
     public void actionPerformed(ActionEvent e) {
         String commande = e.getActionCommand();
         enleverDerniereOperation();
@@ -34,8 +38,6 @@ public class EcouteurOperationsCompte implements ActionListener {
                 client.envoyer(commande);
                 break;
             case "DEPOT":
-                //TODO PS :this permet de rediriger les actions
-                //TODO de PanneauOperation vers le actionPerformed ici  (enlever le TODO à la fin).
                 panneauOperation = new PanneauOperation(TypeOperation.DEPOT, this);
                 break;
             case "RETRAIT":
@@ -61,6 +63,13 @@ public class EcouteurOperationsCompte implements ActionListener {
         redessinerInterface();
     }
 
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Méthode qui redessine l'interface ;
+     *      - ajout du panneau d'opérations au panneauCompteClient
+     *      - Réorganisation des composantes
+     *      - Mise-à-jour de l'affichage
+     */
     private void redessinerInterface() {
         if (panneauOperation != null) {
             panneauCompteClient.add(panneauOperation, BorderLayout.CENTER);
@@ -69,6 +78,10 @@ public class EcouteurOperationsCompte implements ActionListener {
         }
     }
 
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Méthode qui enlève le dernier panneau d'opérations du panneauCompteClient, permettant d'éviter les doublons
+     */
     private void enleverDerniereOperation() {
         if (panneauOperation != null) {
             panneauCompteClient.remove(panneauOperation);
