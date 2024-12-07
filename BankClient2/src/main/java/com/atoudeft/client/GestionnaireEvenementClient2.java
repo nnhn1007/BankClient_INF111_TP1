@@ -111,7 +111,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     arg = evenement.getArgument();
                     arg = arg.substring(arg.indexOf("DEPOT") + 3).trim();
                     panneauPrincipal.setSoldeCompte(arg); // Ajouté par Mathis Odjo'o Ada
-                    JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT " + arg);
+                    JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT : " + arg);
 
                     break;
                 case "RETRAIT": // Question 4.3 - Fait par Mathis Odjo'o Ada

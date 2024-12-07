@@ -17,7 +17,7 @@ public class PanneauOperations extends JPanel {
     private TypeOperation typeOperation;
     private JPanel pMontant;
     private JLabel titre;
-    private JPanel content;
+    private final JPanel controle;
     private JTextField montant;
     private JTextField texteNumerofacture;
     private JTextField texteDescription;
@@ -30,13 +30,13 @@ public class PanneauOperations extends JPanel {
      * @param ecouteur écouteur gestionnaire d'événement du bouton 'CONFIRMER'
      */
     public PanneauOperations(TypeOperation type, ActionListener ecouteur) {
-        content = new JPanel();
+        controle = new JPanel();
         try {
             switch (type) {
                 case DEPOT, RETRAIT, FACTURE, TRANSFER:
                     this.typeOperation = type;
                     titre = new JLabel(typeOperation.getAction(), SwingConstants.CENTER);
-                    content.add(titre);
+                    controle.add(titre);
 
                     creerBoutton(ecouteur);
                     creerChampsMontant();
@@ -49,7 +49,7 @@ public class PanneauOperations extends JPanel {
             }
 
             creerPanels();
-            add(content, BorderLayout.CENTER);
+            add(controle, BorderLayout.CENTER);
         } catch (NullPointerException operationInexistante) {
             JOptionPane.showMessageDialog(
                     null,
@@ -75,9 +75,9 @@ public class PanneauOperations extends JPanel {
      */
     private void creerPanels() {
 
-        content.setLayout(new GridLayout(COLONNE, LIGNE));
-        content.add(pMontant);
-        content.add(btnConfirmer);
+        controle.setLayout(new GridLayout(COLONNE, LIGNE));
+        controle.add(pMontant);
+        controle.add(btnConfirmer);
     }
 
     /**
@@ -135,13 +135,13 @@ public class PanneauOperations extends JPanel {
         champNumeroFacture.add(new JLabel("Numero de facture : "), SwingConstants.CENTER);
         texteNumerofacture = new JTextField(10);
         champNumeroFacture.add(texteNumerofacture);
-        content.add(champNumeroFacture);
+        controle.add(champNumeroFacture);
 
         JPanel champDescriptionFacture = new JPanel();
         champDescriptionFacture.add(new JLabel("Description : "), SwingConstants.CENTER);
         texteDescription = new JTextField(14);
         champDescriptionFacture.add(texteDescription);
-        content.add(champDescriptionFacture);
+        controle.add(champDescriptionFacture);
     }
 
     /**
@@ -153,7 +153,7 @@ public class PanneauOperations extends JPanel {
         champCompteDestinataire.add(new JLabel("Compte Destinataire : "), SwingConstants.CENTER);
         compteDestinataire = new JTextField(10);
         champCompteDestinataire.add(compteDestinataire);
-        content.add(champCompteDestinataire);
+        controle.add(champCompteDestinataire);
     }
 
     /**
