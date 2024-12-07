@@ -137,7 +137,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "TRANSFER": //Question 4.3 - Fait par Nancy Nguyen
                     arg = evenement.getArgument();
                     if(arg.trim().startsWith("NO")){
-                        JOptionPane.showMessageDialog(panneauPrincipal,"TRANFERT REFUSÉ");
+                        JOptionPane.showMessageDialog(panneauPrincipal,"TRANSFER REFUSÉ");
                     } else {
                         arg = arg.substring(arg.indexOf("TRANSFER") +3);
                         panneauPrincipal.setSoldeCompte(arg);
