@@ -24,6 +24,7 @@ public class PanneauOperations extends JPanel {
     private JTextField compteDestinataire;
 
     /**
+     * Fait par Mathis Odjo'o Ada
      * Constructeur initialisant un panneau d'opérations
      *
      * @param type     type d'opération à effectuer (DEPOT, RETRAIT, FACTURE ou TRANSFER)
@@ -61,6 +62,7 @@ public class PanneauOperations extends JPanel {
     }
 
     /**
+     * Fait par Mathis Odjo'o Ada
      * Méthode qui crée et configure le bouton 'CONFIRMER' du panneau
      * @param ecouteur écouteur d'événements pour le bouton 'CONFIRMER'
      */
@@ -71,7 +73,8 @@ public class PanneauOperations extends JPanel {
     }
 
     /**
-     * @author Méthode qui configure les panneaux en organisant leurs composantes
+     * Fait par Mathis Odjo'o Ada
+     * Méthode qui configure les panneaux en organisant leurs composantes
      */
     private void creerPanels() {
         controle.setLayout(new GridLayout(COLONNE, LIGNE));
@@ -80,6 +83,7 @@ public class PanneauOperations extends JPanel {
     }
 
     /**
+     * Fait par Mathis Odjo'o Ada
      * Méthode qui crée un champ de texte pour saisir le montant d'une opération
      */
     private void creerChampsMontant() {
@@ -90,6 +94,7 @@ public class PanneauOperations extends JPanel {
     }
 
     /**
+     * Fait par Mathis Odjo'o Ada
      * Méthode qui retourne le montant saisi par l'utilisateur
      * @return montant saisi par l'utilisateur
      */
@@ -126,7 +131,7 @@ public class PanneauOperations extends JPanel {
     }
 
     /**
-     * Fait par Mathis Odjo'o Ada
+     * Fait par Mathis Odjo'o Ada et Melissa Sehad
      * Méthode configurant les champs de saisie et des étiquettes pour l'opération FACTURE
      */
     private void dessinerFacture() {
@@ -144,7 +149,7 @@ public class PanneauOperations extends JPanel {
     }
 
     /**
-     * Fait par Mathis Odjo'o Ada
+     * Fait par Nancy Nguyen
      * Méthode configurant les champs de saisie et des étiquettes pour l'opération TRANSFER
      */
     private void dessinerTransfert() {
@@ -162,7 +167,6 @@ public class PanneauOperations extends JPanel {
      * @return le champ de texte saisi dans 'texteDescription' par le client
      */
     private String getDescription(JTextField texteDescription) {
-        System.out.println(texteDescription.getText());
         return texteDescription.getText();
     }
 
@@ -173,7 +177,6 @@ public class PanneauOperations extends JPanel {
      * @return le numéro de la facture saisi par le client
      */
     private String getNumeroFacture(JTextField numerofacture) {
-        System.out.println(numerofacture.getText());
         return numerofacture.getText();
     }
 
@@ -184,7 +187,6 @@ public class PanneauOperations extends JPanel {
      * @return le numéro du compte destinataire
      */
     private String getNumeroCompteDestinataire(JTextField compteDestinataire) {
-        System.out.println(compteDestinataire.getText());
         return compteDestinataire.getText();
     }
 
