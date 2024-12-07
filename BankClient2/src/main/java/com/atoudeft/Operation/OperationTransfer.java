@@ -56,7 +56,7 @@ public class OperationTransfer extends Operation implements Serializable {
      * @return chaîne de format: "TRANSFER [montantTransfer] [numeroCompteDestinataire]"
      */
     public String toString() {
-        return "TRANSFER " + " " + montantTransfer + " " + numeroCompteDestinataire;
+        return "TRANSFER "  + montantTransfer + " " + numeroCompteDestinataire;
     }
 
 }

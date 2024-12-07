@@ -74,7 +74,6 @@ public class PanneauOperations extends JPanel {
      * @author Méthode qui configure les panneaux en organisant leurs composantes
      */
     private void creerPanels() {
-
         controle.setLayout(new GridLayout(COLONNE, LIGNE));
         controle.add(pMontant);
         controle.add(btnConfirmer);
@@ -94,7 +93,7 @@ public class PanneauOperations extends JPanel {
      * Méthode qui retourne le montant saisi par l'utilisateur
      * @return montant saisi par l'utilisateur
      */
-    private double getMontant() {
+    private double getMontant(JTextField montant) {
         return Double.parseDouble(montant.getText());
     }
 
@@ -108,11 +107,11 @@ public class PanneauOperations extends JPanel {
         // cas d'exeptions (ex: si on ne met pas de valeur)
         try {
             operation = switch (typeOperation) {
-                case DEPOT -> new OperationDepot(getMontant());
-                case RETRAIT -> new OperationRetrait(getMontant());
-                case FACTURE -> new OperationFacture(getMontant(), getNumeroFacture(texteNumerofacture)
+                case DEPOT -> new OperationDepot(getMontant(montant));
+                case RETRAIT -> new OperationRetrait(getMontant(montant));
+                case FACTURE -> new OperationFacture(getMontant(montant), getNumeroFacture(texteNumerofacture)
                         , getDescription(texteDescription));
-                case TRANSFER -> new OperationTransfer(getMontant(),
+                case TRANSFER -> new OperationTransfer(getMontant(montant),
                         getNumeroCompteDestinataire(compteDestinataire));
             };
         } catch (Exception gererException) {

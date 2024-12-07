@@ -93,7 +93,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         panneauPrincipal.ajouterCompte(str);
                     }
                     break;
-                case "SELECT": //Question 3.1 - Fait parNancy Nguyen et Mathis Odjo'o Ada
+                case "SELECT": //Question 3.1 - Fait par Nancy Nguyen, Mathis Odjo'o Ada et Melissa Sehad
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
                         JOptionPane.showMessageDialog(panneauPrincipal, "Connexion refusée");
@@ -114,7 +114,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT : " + arg);
 
                     break;
-                case "RETRAIT": // Question 4.3 - Fait par Mathis Odjo'o Ada
+                case "RETRAIT": // Question 4.3 - Fait par Mathis Odjo'o Ada et Melissa Sehad
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
                         JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT REFUSÉ !");
@@ -139,7 +139,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     if(arg.trim().startsWith("NO")){
                         JOptionPane.showMessageDialog(panneauPrincipal,"TRANFERT REFUSÉ");
                     } else {
-                        arg = arg.substring(arg.indexOf("TRANSFER") + 3);
+                        arg = arg.substring(arg.indexOf("TRANSFER") +3);
                         panneauPrincipal.setSoldeCompte(arg);
                         JOptionPane.showMessageDialog(panneauPrincipal, "TRANSFER : " + arg);
                     }

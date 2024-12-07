@@ -37,7 +37,7 @@ public class EcouteurOperationsCompte implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         String commande = e.getActionCommand();
-        enleverPanneauOperationPrecedent();
+        enleverPanneauPrecedent();
 
         switch (commande) {
             case "EPARGNE", "HIST":
@@ -74,7 +74,7 @@ public class EcouteurOperationsCompte implements ActionListener {
      * Méthode qui enlève le dernier panneau d'opérations du panneauCompteClient,
      * permettant d'éviter les doublons de panneau
      */
-    private void enleverPanneauOperationPrecedent() {
+    private void enleverPanneauPrecedent() {
         if (panneauOperation != null) {
             panneauCompteClient.remove(panneauOperation);
         }
