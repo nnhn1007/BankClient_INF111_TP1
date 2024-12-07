@@ -3,7 +3,7 @@ package com.atoudeft.client;
 import com.atoudeft.commun.evenement.Evenement;
 import com.atoudeft.commun.evenement.GestionnaireEvenement;
 import com.atoudeft.commun.net.Connexion;
-import com.atoudeft.vue.panneauHistoriqueDuCompte;
+import com.atoudeft.vue.PanneauHistoriqueDuCompte;
 import com.atoudeft.vue.PanneauPrincipal;
 import com.programmes.MainFrame;
 
@@ -46,7 +46,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "HIST": //Le serveur a renvoyé
                     panneauPrincipal.setVisible(true);
                     arg = evenement.getArgument();
-                    JOptionPane.showMessageDialog(panneauPrincipal, new panneauHistoriqueDuCompte(arg), "Historique" +
+                    JOptionPane.showMessageDialog(panneauPrincipal, new PanneauHistoriqueDuCompte(arg), "Historique" +
                             " du compte", JOptionPane.PLAIN_MESSAGE);
                     cnx.envoyer("LIST");
                     break;
@@ -159,8 +159,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
      * @return le solde extrait
      */
     private double extractionSolde(String arg){
-        String[] t = arg.split(" ");
-        double solde = Double.parseDouble(t[1]);
-        return solde;
+        String[] solde = arg.split(" ");
+        return Double.parseDouble(solde[1]);
     }
 }

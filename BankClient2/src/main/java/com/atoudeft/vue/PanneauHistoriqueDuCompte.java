@@ -8,15 +8,15 @@ import java.awt.*;
  *
  * @author Mathis Odjo'o Ada
  */
-public class panneauHistoriqueDuCompte extends JPanel {
+public class PanneauHistoriqueDuCompte extends JPanel {
 
     /**
      * Constructeur de la classe panneauHistoriqueDuCompte
      * @param historique chaîne caractères affaichant l'historique des opérations d'un compte
      */
-    public panneauHistoriqueDuCompte(String historique) {
+    public PanneauHistoriqueDuCompte(String historique) {
         JTextArea histogramme = new JTextArea(historique);
-        histogramme.setEditable(false);
+        histogramme.setEditable(false); //L'historique ne doit pas pouvoir être édité par l'utilisateur
 
         JScrollPane defilement = new JScrollPane(histogramme);
         add(defilement, BorderLayout.CENTER);

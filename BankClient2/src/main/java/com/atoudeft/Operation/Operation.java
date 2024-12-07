@@ -1,6 +1,6 @@
 package com.atoudeft.Operation;
 
-import com.atoudeft.vue.PanneauOperation;
+import com.atoudeft.vue.PanneauOperations;
 
 import javax.swing.*;
 import java.io.Serializable;
@@ -15,7 +15,7 @@ import java.util.Date;
 public abstract class Operation implements Serializable {
     private final TypeOperation type;
     private final Date date;
-    private PanneauOperation panneauOperation;
+    private PanneauOperations panneauOperation;
     Operation operation;
 
     /**

@@ -11,8 +11,8 @@ import com.atoudeft.Operation.*;
 /**
  *
  */
-public class PanneauOperation extends JPanel {
-    private static final int ESPACE = 5, COLONNE = 0, LIGNE = 1;
+public class PanneauOperations extends JPanel {
+    private static final int COLONNE = 0, LIGNE = 1;
     private JButton btnConfirmer;
     private TypeOperation typeOperation;
     private JPanel pMontant;
@@ -25,10 +25,11 @@ public class PanneauOperation extends JPanel {
 
     /**
      * Constructeur initialisant un panneau d'opérations
-     * @param type type d'opération à effectuer (DEPOT, RETRAIT, FACTURE ou TRANSFER)
+     *
+     * @param type     type d'opération à effectuer (DEPOT, RETRAIT, FACTURE ou TRANSFER)
      * @param ecouteur écouteur gestionnaire d'événement du bouton 'CONFIRMER'
      */
-    public PanneauOperation(TypeOperation type, ActionListener ecouteur) {
+    public PanneauOperations(TypeOperation type, ActionListener ecouteur) {
         content = new JPanel();
         try {
             switch (type) {
@@ -37,14 +38,16 @@ public class PanneauOperation extends JPanel {
                     titre = new JLabel(typeOperation.getAction(), SwingConstants.CENTER);
                     content.add(titre);
 
-                    creerButton(ecouteur);
+                    creerBoutton(ecouteur);
                     creerChampsMontant();
                     switch (type) {
-                        case FACTURE -> dessinerFacture();
+                        case FACTURE  -> dessinerFacture();
                         case TRANSFER -> dessinerTransfert();
                     }
                     break;
+                default: System.err.println("Aucune opération possible.");
             }
+
             creerPanels();
             add(content, BorderLayout.CENTER);
         } catch (NullPointerException operationInexistante) {
@@ -57,18 +60,18 @@ public class PanneauOperation extends JPanel {
         }
     }
 
-    /** Méthode qui crée et configure le bouton 'CONFIRMER' du panneau
+    /**
+     * Méthode qui crée et configure le bouton 'CONFIRMER' du panneau
      * @param ecouteur écouteur d'événements pour le bouton 'CONFIRMER'
      */
-    private void creerButton(ActionListener ecouteur) {
-        btnConfirmer = new JButton("CONFIRMER");
-        btnConfirmer.setActionCommand("CONFIRMER");
+    private void creerBoutton(ActionListener ecouteur) {
+        btnConfirmer = new JButton("VALIDER");
+        btnConfirmer.setActionCommand("VALIDER");
         btnConfirmer.addActionListener(ecouteur);
     }
 
     /**
-     * @author
-     * Méthode qui configure les panneaux en organisant leurs composantes
+     * @author Méthode qui configure les panneaux en organisant leurs composantes
      */
     private void creerPanels() {
 
@@ -104,20 +107,14 @@ public class PanneauOperation extends JPanel {
         //TODO peut être mettre le code ici en TRY catch pour gérer les
         // cas d'exeptions (ex: si on ne met pas de valeur)
         try {
-            switch (typeOperation) {
-                case DEPOT:
-                    operation = new OperationDepot(getMontant());
-                    break;
-                case RETRAIT:
-                    operation = new OperationRetrait(getMontant());
-                    break;
-                case FACTURE:
-                    operation= new OperationFacture(getMontant(),getNumeroFacture(texteNumerofacture),getDescription(texteDescription));
-                    break;
-                case TRANSFER:
-                    operation = new OperationTransfer(getMontant(),getNumeroCompteDestinataire(compteDestinataire));
-                    break;
-            }
+            operation = switch (typeOperation) {
+                case DEPOT -> new OperationDepot(getMontant());
+                case RETRAIT -> new OperationRetrait(getMontant());
+                case FACTURE -> new OperationFacture(getMontant(), getNumeroFacture(texteNumerofacture)
+                        , getDescription(texteDescription));
+                case TRANSFER -> new OperationTransfer(getMontant(),
+                        getNumeroCompteDestinataire(compteDestinataire));
+            };
         } catch (Exception gererException) {
             JOptionPane.showMessageDialog(
                     null,
@@ -147,13 +144,14 @@ public class PanneauOperation extends JPanel {
         content.add(champDescriptionFacture);
     }
 
-    /** Fait par Mathis Odjo'o Ada
+    /**
+     * Fait par Mathis Odjo'o Ada
      * Méthode configurant les champs de saisie et des étiquettes pour l'opération TRANSFER
      */
-    private void dessinerTransfert(){
+    private void dessinerTransfert() {
         JPanel champCompteDestinataire = new JPanel();
         champCompteDestinataire.add(new JLabel("Compte Destinataire : "), SwingConstants.CENTER);
-        compteDestinataire = new JTextField(14);
+        compteDestinataire = new JTextField(10);
         champCompteDestinataire.add(compteDestinataire);
         content.add(champCompteDestinataire);
     }
@@ -164,18 +162,18 @@ public class PanneauOperation extends JPanel {
      * @param texteDescription champ de texte pour la description de la facture
      * @return le champ de texte saisi dans 'texteDescription' par le client
      */
-    private String getDescription(JTextField texteDescription){
+    private String getDescription(JTextField texteDescription) {
         System.out.println(texteDescription.getText());
         return texteDescription.getText();
     }
 
     /**
      * Fait par Mathis Odjo'o Ada
-     * Accesseur: Récupère le numéro de la facture
-     * @param numerofacture  numéro de la facture saisie
+     * Accesseur: Récupère le numéro de la facture*
+     * @param numerofacture numéro de la facture saisie
      * @return le numéro de la facture saisi par le client
      */
-    private String getNumeroFacture(JTextField numerofacture){
+    private String getNumeroFacture(JTextField numerofacture) {
         System.out.println(numerofacture.getText());
         return numerofacture.getText();
     }
@@ -183,10 +181,10 @@ public class PanneauOperation extends JPanel {
     /**
      * Fait par Nancy Nguyen
      * Accesseur: Récupère le numéro de compte du compte destinataire
-     * @param compteDestinataire  nnuméro du compte destinataire
+     * @param compteDestinataire nnuméro du compte destinataire
      * @return le numéro du compte destinataire
      */
-    private String getNumeroCompteDestinataire(JTextField compteDestinataire){
+    private String getNumeroCompteDestinataire(JTextField compteDestinataire) {
         System.out.println(compteDestinataire.getText());
         return compteDestinataire.getText();
     }
