@@ -33,14 +33,15 @@ public class PanneauPrincipal extends JPanel {
         panneauConnexion.setEcouteur(new EcouteurConnexion(client, panneauConnexion));
         panneauCompteClient = new JPanel();
 
-
         /* Fait par Mathis Odjo'o Ada
-        Création des panneaux d'opérations */
+        Création des panneaux d'opérations
+        */
         panneauOperationsCompte = new PanneauOperationsCompte();
 
         /**
          * Fait par Mathis Odjo'o Ada
-         * Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas) */
+         * Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
+         * */
         EcouteurOperationsCompte ecouteurOperationsCompte = new EcouteurOperationsCompte(client, panneauCompteClient);
         panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
 
