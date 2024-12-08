@@ -65,7 +65,7 @@ public class EcouteurOperationsCompte implements ActionListener {
         if (panneauOperation != null) {
             panneauCompteClient.add(panneauOperation, BorderLayout.CENTER);
             panneauCompteClient.revalidate(); // Réorganise les composants
-            panneauCompteClient.repaint(); // Rafraîchit l'affichage
+            panneauCompteClient.repaint(); // Rafraîchit l'affichage pour ne pas empiler les panneaux.
         }
     }
 

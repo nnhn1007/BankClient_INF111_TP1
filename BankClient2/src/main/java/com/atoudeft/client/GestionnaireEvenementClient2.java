@@ -101,7 +101,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     } else {
                         arg = evenement.getArgument();
                         arg = arg.substring(arg.indexOf("SELECT") + 3).trim();
-                        double solde =  extractionSolde(arg);
+                        double solde =  extractionSolde(arg); //Fait par Nancy Nguyen
                         panneauPrincipal.setSoldeCompte(String.valueOf(solde));
                         JOptionPane.showMessageDialog(panneauPrincipal, "SELECT " + arg);
                         break;
