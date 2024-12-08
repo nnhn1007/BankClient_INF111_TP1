@@ -20,11 +20,9 @@ public class PanneauPrincipal extends JPanel {
     private JPanel panneauCompteClient;
     private PanneauOperationsCompte panneauOperationsCompte;
 
-
     private DefaultListModel<String> numerosComptes;
     private JList<String> jlNumerosComptes;
     private JDesktopPane bureau;
-
 
     public PanneauPrincipal(Client client) {
         this.client = client;
@@ -41,7 +39,7 @@ public class PanneauPrincipal extends JPanel {
         /**
          * Fait par Mathis Odjo'o Ada
          * Création d'un EcouteurOperationsCompte pour les différentes opérations (sinon ne compile pas)
-         * */
+         */
         EcouteurOperationsCompte ecouteurOperationsCompte = new EcouteurOperationsCompte(client, panneauCompteClient);
         panneauOperationsCompte.setEcouteur(ecouteurOperationsCompte);
 
@@ -62,7 +60,6 @@ public class PanneauPrincipal extends JPanel {
 
         //Enregistrement de l'écouteur de souris:
         jlNumerosComptes.addMouseListener(new EcouteurListeComptes(client, jlNumerosComptes));
-
 
         this.setLayout(new BorderLayout());
 
