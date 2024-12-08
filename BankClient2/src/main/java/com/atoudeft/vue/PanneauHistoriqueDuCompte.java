@@ -13,6 +13,7 @@ public class PanneauHistoriqueDuCompte extends JPanel {
     /**
      * Fait par Mathis Odjo'o Ada et Melissa Sehad
      * Constructeur de la classe panneauHistoriqueDuCompte
+     *
      * @param historique chaîne caractères affaichant l'historique des opérations d'un compte
      */
     public PanneauHistoriqueDuCompte(String historique) {

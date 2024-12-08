@@ -19,7 +19,6 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
      * @param client Client Le client pour lequel ce gestionnaire gère des événements
      */
     public GestionnaireEvenementClient2(Client client, PanneauPrincipal panneauPrincipal) {
-
         this.client = client;
         this.panneauPrincipal = panneauPrincipal;
         this.client.setGestionnaireEvenement(this);
@@ -50,11 +49,13 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                             " du compte", JOptionPane.PLAIN_MESSAGE);
                     cnx.envoyer("LIST");
                     break;
+
                 case "OK":
                     panneauPrincipal.setVisible(true);
                     fenetre = (MainFrame) panneauPrincipal.getTopLevelAncestor();
                     fenetre.setTitle(MainFrame.TITRE);//+" - Connecté"
                     break;
+
                 case "NOUVEAU":
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
@@ -66,6 +67,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         panneauPrincipal.ajouterCompte(str);
                     }
                     break;
+
                 case "CONNECT":
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
@@ -93,6 +95,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         panneauPrincipal.ajouterCompte(str);
                     }
                     break;
+
                 case "SELECT": //Question 3.1 - Fait par Nancy Nguyen, Mathis Odjo'o Ada et Melissa Sehad
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
@@ -112,8 +115,8 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     arg = arg.substring(arg.indexOf("DEPOT") + 3).trim();
                     panneauPrincipal.setSoldeCompte(arg); // Ajouté par Mathis Odjo'o Ada
                     JOptionPane.showMessageDialog(panneauPrincipal, "DEPOT : " + arg);
-
                     break;
+
                 case "RETRAIT": // Question 4.3 - Fait par Mathis Odjo'o Ada et Melissa Sehad
                     arg = evenement.getArgument();
                     if (arg.trim().startsWith("NO")) {
@@ -124,6 +127,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         JOptionPane.showMessageDialog(panneauPrincipal, "RETRAIT : " + arg);
                     }
                     break;
+
                 case "FACTURE": // Question 4.3 - Fait par Mathis Odjo'o Ada
                     arg = evenement.getArgument();
                     if(arg.trim().startsWith("NO")){
@@ -134,6 +138,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         JOptionPane.showMessageDialog(panneauPrincipal, "FACTURE : " + arg);
                     }
                     break;
+
                 case "TRANSFER": //Question 4.3 - Fait par Nancy Nguyen
                     arg = evenement.getArgument();
                     if(arg.trim().startsWith("NO")){
