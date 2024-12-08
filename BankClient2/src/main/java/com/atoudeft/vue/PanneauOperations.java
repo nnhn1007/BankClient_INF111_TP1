@@ -108,8 +108,6 @@ public class PanneauOperations extends JPanel {
      */
     public Operation getOperation() {
         Operation operation = null;
-        //TODO peut être mettre le code ici en TRY catch pour gérer les
-        // cas d'exeptions (ex: si on ne met pas de valeur)
         try {
             operation = switch (typeOperation) {
                 case DEPOT -> new OperationDepot(getMontant(montant));
