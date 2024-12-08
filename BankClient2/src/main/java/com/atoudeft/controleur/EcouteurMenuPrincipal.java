@@ -57,7 +57,8 @@ public class EcouteurMenuPrincipal implements ActionListener {
                         PanneauConfigServeur configurationPanel = new PanneauConfigServeur(client.getAdrServeur(), client.getPortServeur());
                         while (config) {
                             try {
-                                res = JOptionPane.showConfirmDialog(fenetre, configurationPanel, "Configuration serveur", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                                res = JOptionPane.showConfirmDialog(fenetre, configurationPanel,
+                                        "Configuration serveur", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                                 if (res == JOptionPane.OK_OPTION) {
                                     client.setAdrServeur(configurationPanel.getAdresseServeur());
                                     int port = Integer.parseInt(configurationPanel.getPortServeur());
@@ -66,7 +67,9 @@ public class EcouteurMenuPrincipal implements ActionListener {
                                 }
                                 else if (res == JOptionPane.CANCEL_OPTION) { break; }
                                 //Si l'utilisateur rentre un port avec des lettres ou si le port est null
-                            } catch (NumberFormatException e) { System.out.println(e); }
+                            } catch (NumberFormatException e) {
+                                JOptionPane.showMessageDialog(null,"Veuillez rentrer un numéro de port valide"
+                                ,"Port invalide",JOptionPane.ERROR_MESSAGE); }
                         }
                     }
                     break;
