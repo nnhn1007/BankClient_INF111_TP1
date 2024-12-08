@@ -31,7 +31,7 @@ public class PanneauPrincipal extends JPanel {
         panneauConnexion.setEcouteur(new EcouteurConnexion(client, panneauConnexion));
         panneauCompteClient = new JPanel();
 
-        /* Fait par Mathis Odjo'o Ada
+        /** Fait par Mathis Odjo'o Ada
         Création des panneaux d'opérations
         */
         panneauOperationsCompte = new PanneauOperationsCompte();
