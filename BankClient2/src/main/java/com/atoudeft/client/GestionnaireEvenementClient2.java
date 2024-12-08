@@ -19,7 +19,6 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
      * @param client Client Le client pour lequel ce gestionnaire gère des événements
      */
     public GestionnaireEvenementClient2(Client client, PanneauPrincipal panneauPrincipal) {
-
         this.client = client;
         this.panneauPrincipal = panneauPrincipal;
         this.client.setGestionnaireEvenement(this);
