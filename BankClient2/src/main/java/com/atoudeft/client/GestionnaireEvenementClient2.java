@@ -82,6 +82,7 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                         }
                     }
                     break;
+
                 /******************* SÉLECTION DE COMPTES *******************/
                 case "EPARGNE": // Question 2.1 - Fait par Mathis Odjo'o Ada
                     arg = evenement.getArgument();
