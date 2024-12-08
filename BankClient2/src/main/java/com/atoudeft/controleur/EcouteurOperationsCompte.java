@@ -44,7 +44,7 @@ public class EcouteurOperationsCompte implements ActionListener {
                 client.envoyer(commande);
                 break;
             case "DEPOT", "RETRAIT", "TRANSFER", "FACTURE":
-                choirirPanneauOperation(TypeOperation.valueOf(commande));
+                choisirPanneauOperation(TypeOperation.valueOf(commande));
                 break;
             case "VALIDER":
                 validerOperation();
@@ -80,10 +80,21 @@ public class EcouteurOperationsCompte implements ActionListener {
         }
     }
 
-    private void choirirPanneauOperation(TypeOperation type) {
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Méthode qui permet d'initialiser et de configurer un panneau selon le type d'opération choisi
+     *
+     * @param type type d'operation choisi (DEPOT, RETRAIT, TRANSFER, FACTURE)
+     */
+    private void choisirPanneauOperation(TypeOperation type) {
         panneauOperation = new PanneauOperations(type, this);
     }
 
+    /**
+     * Fait par Mathis Odjo'o Ada
+     * Méthode qui vérifie que le panneau est actif, valide l'opération en cours,
+     * et l'envoie au client une fois validée
+     */
     private void validerOperation() {
         if (panneauOperation != null) {
             operation = panneauOperation.getOperation();
