@@ -23,7 +23,7 @@ import java.util.Vector;
  * @since 2023-11-01
  */
 public class MainFrame extends JFrame implements Runnable, Observateur {
-
+    private static final int MILLE = 1000, SIX_CENT = 600;
     public static final String TITRE = "BankEts - Client";
     private Client client;
     private PanneauPrincipal panneauPrincipal;
@@ -40,7 +40,7 @@ public class MainFrame extends JFrame implements Runnable, Observateur {
 
     private void configurerFenetrePrincipale() {
         //Configuration de la fenêtre
-        this.setSize(1000,600);
+        this.setSize(MILLE,SIX_CENT);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 

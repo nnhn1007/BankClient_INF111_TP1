@@ -15,6 +15,7 @@ import java.awt.*;
  * @since 2024-11-01
  */
 public class PanneauPrincipal extends JPanel {
+    private static final int DEUX_CENT_CINQUANTE = 250, CINQ_CENT = 500;
     private Client client;
     private PanneauConnexion panneauConnexion;
     private JPanel panneauCompteClient;
@@ -52,7 +53,7 @@ public class PanneauPrincipal extends JPanel {
         jlNumerosComptes = new JList<>(numerosComptes);
         jlNumerosComptes.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
         jlNumerosComptes.setBorder(BorderFactory.createTitledBorder("Comptes bancaires"));
-        jlNumerosComptes.setPreferredSize(new Dimension(250, 500));
+        jlNumerosComptes.setPreferredSize(new Dimension(DEUX_CENT_CINQUANTE, CINQ_CENT));
 
         panneauCompteClient.add(panneauOperationsCompte, BorderLayout.NORTH);
         panneauCompteClient.add(jlNumerosComptes, BorderLayout.WEST);

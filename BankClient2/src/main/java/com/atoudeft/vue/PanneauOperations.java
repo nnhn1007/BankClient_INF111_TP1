@@ -12,7 +12,7 @@ import com.atoudeft.Operation.*;
  *
  */
 public class PanneauOperations extends JPanel {
-    private static final int COLONNE = 0, LIGNE = 1;
+    private static final int COLONNE = 0, LIGNE = 1, DIX = 10, HUIT = 8, QUATORZE = 14;
     private JButton btnConfirmer;
     private TypeOperation typeOperation;
     private JPanel pMontant;
@@ -88,7 +88,7 @@ public class PanneauOperations extends JPanel {
      */
     private void creerChampsMontant() {
         pMontant = new JPanel();
-        montant = new JTextField(8);
+        montant = new JTextField(HUIT);
         pMontant.add(new JLabel("Montant:"));
         pMontant.add(montant, BorderLayout.SOUTH);
     }
@@ -135,13 +135,13 @@ public class PanneauOperations extends JPanel {
     private void dessinerFacture() {
         JPanel champNumeroFacture = new JPanel();
         champNumeroFacture.add(new JLabel("Numero de facture : "), SwingConstants.CENTER);
-        texteNumerofacture = new JTextField(10);
+        texteNumerofacture = new JTextField(DIX);
         champNumeroFacture.add(texteNumerofacture);
         controle.add(champNumeroFacture);
 
         JPanel champDescriptionFacture = new JPanel();
         champDescriptionFacture.add(new JLabel("Description : "), SwingConstants.CENTER);
-        texteDescription = new JTextField(14);
+        texteDescription = new JTextField(QUATORZE);
         champDescriptionFacture.add(texteDescription);
         controle.add(champDescriptionFacture);
     }
@@ -153,7 +153,7 @@ public class PanneauOperations extends JPanel {
     private void dessinerTransfert() {
         JPanel champCompteDestinataire = new JPanel();
         champCompteDestinataire.add(new JLabel("Compte Destinataire : "), SwingConstants.CENTER);
-        compteDestinataire = new JTextField(10);
+        compteDestinataire = new JTextField(DIX);
         champCompteDestinataire.add(compteDestinataire);
         controle.add(champCompteDestinataire);
     }
