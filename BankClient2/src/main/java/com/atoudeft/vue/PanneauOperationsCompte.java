@@ -54,7 +54,6 @@ public class PanneauOperationsCompte extends JPanel {
     /**
      * Fait par Mathis Odjo'o Ada
      * Mutateur: Méthode qui permet de mettre à jour l'affichage du solde actuel du GUI sur le panneau
-     *
      * @param solde solde du compte à afficher
      */
     public void SetSolde(double solde) {
